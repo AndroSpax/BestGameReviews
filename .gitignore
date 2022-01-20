@@ -1,3 +1,4 @@
+.metadata
 # compiled output
 BestGamesReviews/dist
 BestGamesReviews/tmp
@@ -47,5 +48,9 @@ BestGamesReviews_/*.ipr
 
 ### VS Code ###
 BestGamesReviews_/.vscode/
+BestGamesReviews_/.classpath
+BestGamesReviews_/.factorypath
+
+
 
 
