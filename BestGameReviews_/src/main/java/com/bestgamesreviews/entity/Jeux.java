@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.formation.entity;
+package com.bestgamesreviews.entity;
 
 import java.time.LocalDate;
 
