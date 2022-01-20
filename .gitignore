@@ -1,3 +1,51 @@
-.metadata
-.idea
-nodes_modules
+# compiled output
+BestGamesReviews/dist
+BestGamesReviews/tmp
+BestGamesReviews/out-tsc
+BestGamesReviews/
+# dependencies
+BestGamesReviews/node_modules
+BestGamesReviews/
+# profiling files
+BestGamesReviews/chrome-profiler-events*.json
+BestGamesReviews/
+# IDEs and editors
+BestGamesReviews/.idea
+BestGamesReviews/.project
+BestGamesReviews/.classpath
+BestGamesReviews/.c9/
+BestGamesReviews/*.launch
+BestGamesReviews/.settings/
+BestGamesReviews/*.sublime-workspace
+
+# IDE - VSCode
+BestGamesReviews/.vscode/*
+BestGamesReviews/!.vscode/settings.json
+BestGamesReviews/!.vscode/tasks.json
+BestGamesReviews/!.vscode/launch.json
+BestGamesReviews/!.vscode/extensions.json
+BestGamesReviews/.history/*
+
+# System Files
+BestGamesReviews/.DS_Store
+BestGamesReviews/Thumbs.db
+
+### STS ###
+BestGamesReviews_/.apt_generated
+BestGamesReviews_/.classpath
+BestGamesReviews_/.factorypath
+BestGamesReviews_/.project
+BestGamesReviews_/.settings
+BestGamesReviews_/.springBeans
+BestGamesReviews_/.sts4-cache
+BestGamesReviews_/
+### IntelliJ IDEA ###
+BestGamesReviews_/.idea
+BestGamesReviews_/*.iws
+BestGamesReviews_/*.iml
+BestGamesReviews_/*.ipr
+
+### VS Code ###
+BestGamesReviews_/.vscode/
+
+
