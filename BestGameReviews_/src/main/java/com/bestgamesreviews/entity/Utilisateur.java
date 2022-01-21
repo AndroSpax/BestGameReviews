@@ -22,7 +22,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Utilisateur {
+public abstract class Utilisateur {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
