@@ -22,7 +22,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Classifition {
+public class Classification {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
@@ -33,6 +33,6 @@ public class Classifition {
 	/**
 	 * Empty constructor
 	 */
-	public Classifition() {
+	public Classification() {
 	}
 }
