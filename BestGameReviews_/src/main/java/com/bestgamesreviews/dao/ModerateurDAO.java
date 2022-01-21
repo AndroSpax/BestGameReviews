@@ -2,6 +2,11 @@ package com.bestgamesreviews.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ModerateurDAO extends JpaRepository<T, ID> {
+/**
+ * Interface de persistence des entités Moderateur
+ * @author Marielle Michael Rudolph 
+ *
+ */
+public interface ModerateurDAO extends JpaRepository<Moderateur, Long> {
 
 }

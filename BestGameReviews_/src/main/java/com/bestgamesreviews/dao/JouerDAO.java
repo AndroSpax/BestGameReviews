@@ -1,7 +1,0 @@
-package com.bestgamesreviews.dao;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public interface JouerDAO extends JpaRepository<T, ID> {
-
-}

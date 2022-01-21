@@ -2,6 +2,11 @@ package com.bestgamesreviews.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface GenreDAO extends JpaRepository<T, ID> {
+/**
+ * Interface de persistence des entités Genre
+ * @author Marielle Michael Rudolph 
+ *
+ */
+public interface GenreDAO extends JpaRepository<Genre, Long> {
 
 }
