@@ -3,10 +3,7 @@
  */
 package com.bestgamesreviews.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -14,9 +11,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * @author Marielle Machael Rudolph 
- *
+ * un genre est mis  pour différents jeux
+ * @author Marielle Machael Rudolph
  */
 
 @Entity
@@ -30,10 +30,15 @@ public class Genre {
 	@GenericGenerator(name = "native", strategy = "native")
 	private Long id;
 	private String nom;
-	
+
+	@OneToMany(mappedBy = "jeu")
+	private List<Jeux> listeJeux = new ArrayList<>();
+
+
 	/**
 	 * Empty constructor
 	 */
+
 	public Genre() {
 	}
 }

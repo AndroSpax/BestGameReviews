@@ -3,10 +3,7 @@
  */
 package com.bestgamesreviews.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -14,7 +11,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
+ * une classification est mis sur différents jeux
  * @author Marielle Machael Rudolph 
  *
  */
@@ -29,10 +30,14 @@ public class Classification {
 	@GenericGenerator(name = "native", strategy = "native")
 	private Long id;
 	private String nom;
-	
+
+	@OneToMany(mappedBy = "jeu", cascade = CascadeType.PERSIST)
+	private List<Classification> listeClassification = new ArrayList<>();
+
 	/**
 	 * Empty constructor
 	 */
+
 	public Classification() {
 	}
 }
