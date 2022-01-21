@@ -15,9 +15,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @author Marielle Machael Rudolph 
- *
+ * @author Marielle Machael Rudolph
  */
+
 @Entity
 @Getter
 @Setter
@@ -25,7 +25,7 @@ import lombok.Setter;
 public class Moderateur extends Utilisateur{
 
 	private String numeroDetelephone;
-	
+
 	/**
 	 * Empty constructor
 	 */
