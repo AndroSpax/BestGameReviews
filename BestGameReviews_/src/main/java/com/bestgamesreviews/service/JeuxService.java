@@ -5,7 +5,6 @@ package com.bestgamesreviews.service;
  * @author Marielle Michael Rudolph
  *
  */
-
 public interface JeuxService {
 
 }

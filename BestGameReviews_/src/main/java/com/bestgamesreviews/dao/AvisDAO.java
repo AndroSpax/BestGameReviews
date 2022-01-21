@@ -1,6 +1,7 @@
 package com.bestgamesreviews.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.bestgamesreviews.entity.Avis;
 
@@ -10,6 +11,7 @@ import com.bestgamesreviews.entity.Avis;
  * @author Marielle Michael Rudolph 
  * 
  */
+@Repository
 public interface AvisDAO extends JpaRepository<Avis, Long> {
 
 }
