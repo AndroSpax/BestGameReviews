@@ -34,4 +34,6 @@ public class Genre {
 	/**
 	 * Empty constructor
 	 */
+	public Genre() {
+	}
 }

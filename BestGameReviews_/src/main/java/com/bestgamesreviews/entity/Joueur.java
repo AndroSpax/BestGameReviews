@@ -22,4 +22,11 @@ import lombok.Setter;
 public class Joueur extends Utilisateur {
 	
 	private LocalDate dateDenaissance;
+	
+	/**
+	 * Empty constructor
+	 */
+	public Joueur() {
+	}
+
 }
