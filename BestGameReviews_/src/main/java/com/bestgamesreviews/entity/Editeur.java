@@ -32,7 +32,7 @@ public class Editeur {
 	private Long id;
 	private String nom;
 
-	@OneToMany(mappedBy = "jeu")
+	@OneToMany(mappedBy = "editeur")
 	List<Jeux> listeJeux = new ArrayList<>();
 
 	/**

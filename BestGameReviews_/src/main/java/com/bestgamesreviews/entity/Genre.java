@@ -31,7 +31,7 @@ public class Genre {
 	private Long id;
 	private String nom;
 
-	@OneToMany(mappedBy = "jeu")
+	@OneToMany(mappedBy = "genre")
 	private List<Jeux> listeJeux = new ArrayList<>();
 
 

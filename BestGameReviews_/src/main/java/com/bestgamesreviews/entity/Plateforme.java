@@ -31,7 +31,7 @@ public class Plateforme {
     private Long id;
     private String nom;
 
-    @ManyToMany(mappedBy = "jeu", cascade = CascadeType.PERSIST)
+    @ManyToMany(mappedBy = "listePlateforme", cascade = CascadeType.PERSIST)
     private List<Jeux> listeJeux = new ArrayList<>();
 
     /**
