@@ -1,0 +1,38 @@
+.div-notFound{
+  margin-top: 50vh; /* poussé de la moitié de hauteur de viewport */
+  transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+
+}
+
+.notFound {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 36px;
+  text-align: center;
+  margin: 3em auto;
+}
+
+.notFound-img {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+
+.notFound-btn {
+  margin:0 auto;
+  margin: 10em auto;
+  display: flex;
+  justify-content: space-evenly;
+
+}
+
+.notFound-btn-item {
+  border-radius: 50px;
+  padding: 1em;
+}
+
+.notFound-btn-item-a {
+  text-decoration: none;
+  color:#d8d7d9;
+
+}
