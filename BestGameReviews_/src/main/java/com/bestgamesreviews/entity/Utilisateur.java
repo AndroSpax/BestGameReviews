@@ -11,21 +11,21 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
 
 /**
  * @author Marielle Machael Rudolph 
  *
  */
-@Entity
 @Getter
 @Setter
 @AllArgsConstructor
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Utilisateur {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-	@GenericGenerator(name = "native", strategy = "native")
+//	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+//	@GenericGenerator(name = "native", strategy = "native")
 	protected Long id;
 	protected String pseudo;
 	protected String motDePasse;

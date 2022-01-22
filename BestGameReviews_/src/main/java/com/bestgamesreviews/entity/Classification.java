@@ -31,8 +31,8 @@ public class Classification {
 	private Long id;
 	private String nom;
 
-	@OneToMany(mappedBy = "jeu", cascade = CascadeType.PERSIST)
-	private List<Classification> listeClassification = new ArrayList<>();
+	@OneToMany(mappedBy = "classification", cascade = CascadeType.PERSIST)
+	private List<Jeux> listeJeux= new ArrayList<>();
 
 	/**
 	 * Empty constructor

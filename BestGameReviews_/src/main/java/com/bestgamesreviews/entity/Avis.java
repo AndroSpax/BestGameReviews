@@ -36,12 +36,16 @@ public class Avis {
     private LocalDate dateModeration;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "jeu")
+    @JoinColumn(name = "jeux_id")
     private Jeux jeu;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "joueur")
+    @JoinColumn(name = "joueur_id")
     private Joueur joueur;
+    
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "moderateur_id")
+    private Moderateur moderateur;
 
     /**
      * Empty constructor

@@ -31,7 +31,7 @@ public class ModeleEconomique {
     private Long id;
     private String nom;
 
-    @OneToMany(mappedBy = "jeu", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "modeleEconomique", cascade = CascadeType.PERSIST)
     private List<Jeux> listeJeux = new ArrayList<>();
 
     /**

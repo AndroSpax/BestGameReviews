@@ -41,15 +41,15 @@ public class Jeux {
     private LocalDate dateSortie;
     private String image;
 
-    @OneToMany(mappedBy = "avis", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "jeu", cascade = CascadeType.PERSIST)
     private List<Avis> listeAvis = new ArrayList<>();
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "classification")
+    @JoinColumn(name = "classification_id")
     private Classification classification;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "genre")
+    @JoinColumn(name = "genre_id")
     private Genre genre;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
@@ -58,11 +58,11 @@ public class Jeux {
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "jeux_plateformes", joinColumns = {@JoinColumn(name = "jeu")},
-            inverseJoinColumns = {@JoinColumn(name = "plateforme")})
+            inverseJoinColumns = {@JoinColumn(name = "plateforme_id")})
     private List<Plateforme> listePlateforme = new ArrayList<>();
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "modele economique")
+    @JoinColumn(name = "modele_economique_id")
     private ModeleEconomique modeleEconomique;
 
     /***
