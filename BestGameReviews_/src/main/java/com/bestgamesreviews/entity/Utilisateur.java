@@ -19,13 +19,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+//@Entity
+//@Inheritance(strategy = InheritanceType.JOINED)
+@MappedSuperclass
 public abstract class Utilisateur {
 	
 	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-//	@GenericGenerator(name = "native", strategy = "native")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+	@GenericGenerator(name = "native", strategy = "native")
 	protected Long id;
 	protected String pseudo;
 	protected String motDePasse;

@@ -33,14 +33,14 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @Entity
-@Table(name="joueur")
-@DiscriminatorValue("P")
+//@Table(name="joueur")
+//@DiscriminatorValue("P")
 public class Joueur extends Utilisateur {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-	@GenericGenerator(name = "native", strategy = "native")
-	protected Long id;
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+//	@GenericGenerator(name = "native", strategy = "native")
+//	protected Long id;
     private LocalDate dateDenaissance;
 
     @OneToMany(mappedBy = "joueur", cascade = CascadeType.PERSIST)

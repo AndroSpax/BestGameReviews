@@ -1,5 +1,9 @@
 package com.bestgamesreviews.service;
 
+
+
+import java.util.Optional;
+
 import com.bestgamesreviews.entity.Joueur;
 
 /**
@@ -7,9 +11,10 @@ import com.bestgamesreviews.entity.Joueur;
  * @author Marielle Michael Rudolph
  *
  */
+
 public interface JoueurService {
 
     Joueur add(Joueur joueur);
 
-    Joueur find(Long id);
+    Optional<Joueur> find(Long id);
 }
