@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   // { path:'liste-avis', children: avisModuleRoutes},
   { path:'avis', loadChildren: () => import('./avis/avis.module').then((m)=> m.AvisModule)},
+  { path:'user', loadChildren: () => import('./user/user.module').then((m)=> m.UserModule)},
   { path: '**', component:PageNotFoundComponent}
 ];
 

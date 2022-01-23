@@ -17,6 +17,10 @@
   justify-content: space-evenly;
 }
 
+.monkeys {
+  width: 75px;
+	height: 75px;
+}
 
 .notFound-btn {
   margin:0 auto;
@@ -35,4 +39,11 @@
   text-decoration: none;
   color:#d8d7d9;
 
+}
+
+.notFoundExplain {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 25px;
+  text-align: center;
+  margin: 3em auto;
 }
