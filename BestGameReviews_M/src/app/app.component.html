@@ -1,16 +1,18 @@
-<div [class.light-theme]="otherTheme">
+<!-- <div class="content mat-app-background" [class.light-theme]="lightTheme" > -->
+
+  <div>
   <div>
     <h1></h1>
     <h1></h1>
   </div>
 
   <mat-toolbar color="primary">
-    <mat-toolbar-row color="primary">
+    <mat-toolbar-row>
       <button mat-button disabled>
         <a routerLink="/home">
         <img
           class="logoImg"
-          src="/assets/img/logo/TestLogoFinal.jpg"
+          src="../assets/img/logo/BGR.PNG"
           alt="logo BestGameReviews"
         />
         </a>
@@ -19,10 +21,16 @@
       <!-- <button mat-icon-button>
           <mat-icon (click)="theme.toggle()">dark_mode</mat-icon>
         </button>-->
-      <button mat-icon-button>
+      <!-- <button mat-icon-button>
         <mat-icon matTooltip="Thème visuel" aria-label="Changement de thème visuel"
-        (click)="changeTheme()" color="accent">light_mode</mat-icon>
-      </button>
+        (click)="changeTheme()" >light_mode</mat-icon>
+      </button> -->
+      <div>
+        <mat-icon class="mr-8">brightness_5</mat-icon>
+        <mat-slide-toggle [formControl]="toggleControl" class="mr-8">
+        </mat-slide-toggle>
+        <mat-icon>bedtime</mat-icon>
+      </div>
       <button mat-icon-button  routerLink="/home" matTooltip="Acceuil" aria-label="Lien vers l'acceuil">
         <a routerLink="/home"></a>
         <mat-icon>home</mat-icon>
