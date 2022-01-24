@@ -22,6 +22,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.GrantedAuthority;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,6 +33,7 @@ import lombok.Setter;
  * @author Marielle Machael Rudolph 
  *
  */
+@SuppressWarnings("serial")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -39,12 +42,9 @@ import lombok.Setter;
 @DiscriminatorValue("P")
 public class Joueur extends Utilisateur {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-	@GenericGenerator(name = "native", strategy = "native")
-	protected Long id;
     private LocalDate dateDenaissance;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "joueur", cascade = CascadeType.PERSIST)
     private List<Avis> listeAvis = new ArrayList<>();
 

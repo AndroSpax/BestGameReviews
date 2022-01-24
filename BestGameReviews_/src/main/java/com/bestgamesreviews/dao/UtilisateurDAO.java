@@ -4,9 +4,13 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.rest.webmvc.RepositoryRestController;
 
 import com.bestgamesreviews.entity.Utilisateur;
 
+
+@RepositoryRestResource(exported = true)
 public interface UtilisateurDAO extends JpaRepository<Utilisateur, Long>{
 	
 	/**

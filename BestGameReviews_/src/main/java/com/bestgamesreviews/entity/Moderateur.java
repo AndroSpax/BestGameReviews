@@ -22,6 +22,7 @@ import lombok.Setter;
 /**
  * @author Marielle Machael Rudolph
  */
+@SuppressWarnings("serial")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -30,10 +31,7 @@ import lombok.Setter;
 @DiscriminatorValue("F")
 public class Moderateur extends Utilisateur{
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-	@GenericGenerator(name = "native", strategy = "native")
-	protected Long id;
+
 	private String numeroDetelephone;
 
 	/**

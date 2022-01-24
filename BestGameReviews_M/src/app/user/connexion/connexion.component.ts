@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DataService } from 'src/app/data.service';
 import { Subscription } from 'rxjs';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -31,7 +31,7 @@ export class ConnexionComponent implements OnInit {
 
   // onInit récupère le currentThème du data service
   ngOnInit(): void {
-    this.subscription = this.data.currentTheme.subscribe(theme => this.theme = theme)
+    // this.subscription = this.data.currentTheme.subscribe(theme => this.theme = theme);
   }
 
   ngOnDestroy(){
