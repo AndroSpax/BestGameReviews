@@ -1,4 +1,4 @@
-<div class="div-notFound" class="{{ theme }}">
+<div class="div-notFound {{ theme }}">
   <mat-card class="{{ theme }}">
     <p class="notFound">404</p>
     <p class="notFound">GAME OVER</p>
@@ -30,7 +30,7 @@
       * Oups la page que vous recherchez n'existe pas...
     </p>
     <div class="notFound-btn">
-      <button mat-raised-button color="accent" class="notFound-btn-item">
+      <button mat-raised-button color="primary" class="notFound-btn-item">
         <a class="notFound-btn-item-a" [routerLink]="'/home'"
           >Retour à la page d'accueil</a
         >

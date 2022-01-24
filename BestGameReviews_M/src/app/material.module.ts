@@ -34,7 +34,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 const materialModules = [
   CdkTreeModule,
@@ -70,16 +70,11 @@ const materialModules = [
   MatDatepickerModule,
   MatTooltipModule,
   MatSlideToggleModule,
-  BrowserAnimationsModule
 ];
 
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    ...materialModules
-  ],
   exports: [
     ...materialModules
   ]

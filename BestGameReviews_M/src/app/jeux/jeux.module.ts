@@ -14,8 +14,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   imports: [
     CommonModule,
     JeuxRoutingModule,
-    MaterialModule,
-    FlexLayoutModule
+    // MaterialModule,
+    // FlexLayoutModule
   ]
 })
 export class JeuxModule { }

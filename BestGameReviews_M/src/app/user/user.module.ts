@@ -7,6 +7,7 @@ import { ConnexionComponent } from './connexion/connexion.component';
 
 import { MaterialModule } from '../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,8 +18,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     CommonModule,
     UserRoutingModule,
     MaterialModule,
-    FlexLayoutModule
-
+    FlexLayoutModule,
+    ReactiveFormsModule
   ]
 })
 export class UserModule { }

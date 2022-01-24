@@ -4,6 +4,7 @@ import { DataService } from './data.service';
 import { Subscription } from 'rxjs';
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,27 +15,27 @@ export class AppComponent {
 
 
 
-  otherTheme: string = "darkMode";
-  // subscription = new Subscription;
+  otherTheme: string = "";
+  subscription = new Subscription;
 
-  // constructor(private data: DataService){};
-  constructor(){};
+  constructor(private data: DataService){};
+  // constructor(){};
 
   ngOnInit(){
-    // this.subscription = this.data.currentTheme.subscribe(theme => this.otherTheme = theme);
+    this.subscription = this.data.currentTheme.subscribe(theme => this.otherTheme = theme);
   }
 
-  // ngOnDestroy(){
-  //   if (this.subscription != null){
-  //     this.subscription.unsubscribe();
-  //   }
-  // }
+  ngOnDestroy(){
+    if (this.subscription != null){
+      this.subscription.unsubscribe();
+    }
+  }
 
   changeTheme(){
     if (this.otherTheme == "darkMode")
       this.otherTheme = "lightMode";
     else this.otherTheme = "darkMode";
-    // this.data.changeTheme(this.otherTheme);
+    this.data.changeTheme(this.otherTheme);
   }
 
   // @HostBinding('class') className = '';
