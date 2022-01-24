@@ -1,14 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
+import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/data.service';
 import { Subscription } from 'rxjs';
 
-
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-connexion',
+  templateUrl: './connexion.component.html',
+  styleUrls: ['./connexion.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class ConnexionComponent implements OnInit {
 
   theme: string = "darkMode";
   subscription = new Subscription;
