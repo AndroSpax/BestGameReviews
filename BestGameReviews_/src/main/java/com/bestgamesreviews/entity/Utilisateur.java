@@ -17,6 +17,7 @@ import lombok.Setter;
  * @author Marielle Machael Rudolph 
  *
  */
+@SuppressWarnings("serial")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -24,10 +25,7 @@ import lombok.Setter;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Utilisateur implements UserDetails {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
 	@GenericGenerator(name = "native", strategy = "native")

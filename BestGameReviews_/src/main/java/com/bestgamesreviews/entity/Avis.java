@@ -35,7 +35,7 @@ public class Avis {
     private Float note;
     private LocalDate dateModeration;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne( cascade = CascadeType.PERSIST)
     @JoinColumn(name = "jeux_id")
     private Jeux jeu;
 

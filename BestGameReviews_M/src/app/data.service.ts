@@ -6,12 +6,21 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class DataService {
 
-  private theme = new BehaviorSubject<string>("darkMode");
-  currentTheme = this.theme.asObservable();
+  /**
+   *
+   */
+  public _theme = new BehaviorSubject<string>("darkMode");
+  currentTheme = this._theme.asObservable();
 
   constructor() { }
 
   changeTheme(newTheme: string){
-    this.theme.next(newTheme);
+    this._theme.next(newTheme);
   }
+
+
+  public get theme() {
+    return  this._theme;
+  }
+
 }

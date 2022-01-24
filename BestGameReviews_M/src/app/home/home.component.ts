@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { Subscription } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 
 
 @Component({
@@ -17,7 +17,8 @@ export class HomeComponent implements OnInit {
   //constructor(){};
 
   ngOnInit(): void {
-    this.subscription = this.data.currentTheme.subscribe(theme => this.theme = theme)
+    // this.subscription = this.data.currentTheme.subscribe(theme => this.theme = theme)
+    // this._theme = this.data.theme
   }
 
   ngOnDestroy(){

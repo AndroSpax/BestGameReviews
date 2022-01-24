@@ -2,6 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { DataService } from './data.service';
 import { Subscription } from 'rxjs';
+import { style } from '@angular/animations';
 
 
 
@@ -22,20 +23,20 @@ export class AppComponent {
   // constructor(){};
 
   ngOnInit(){
-    this.subscription = this.data.currentTheme.subscribe(theme => this.otherTheme = theme);
+    // this.subscription = this.data.currentTheme.subscribe(theme => this.otherTheme = theme);
   }
 
-  ngOnDestroy(){
-    if (this.subscription != null){
-      this.subscription.unsubscribe();
-    }
-  }
+  // ngOnDestroy(){
+  //   if (this.subscription != null){
+  //     this.subscription.unsubscribe();
+  //   }
+  // }
 
   changeTheme(){
-    if (this.otherTheme == "darkMode")
-      this.otherTheme = "lightMode";
-    else this.otherTheme = "darkMode";
-    this.data.changeTheme(this.otherTheme);
+    // if (this.otherTheme == "darkMode")
+    //   this.otherTheme = "lightMode";
+    // else this.otherTheme = "darkMode";
+    // this.data.changeTheme(this.otherTheme);
   }
 
   // @HostBinding('class') className = '';
