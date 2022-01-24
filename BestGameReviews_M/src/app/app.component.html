@@ -1,12 +1,6 @@
-<!-- <div class="content mat-app-background" [class.light-theme]="lightTheme" > -->
-
-  <div>
-  <div>
-    <h1></h1>
-    <h1></h1>
-  </div>
-
-  <mat-toolbar color="primary">
+  <div class={{otherTheme}}>
+    <!-- <mat-card class={{otherTheme}}></mat-card> -->
+  <mat-toolbar color="primary" class="toolbar" >
     <mat-toolbar-row>
       <button mat-button disabled>
         <a routerLink="/home">
@@ -25,12 +19,16 @@
         <mat-icon matTooltip="Thème visuel" aria-label="Changement de thème visuel"
         (click)="changeTheme()" >light_mode</mat-icon>
       </button> -->
-      <div>
-        <mat-icon class="mr-8">brightness_5</mat-icon>
-        <mat-slide-toggle [formControl]="toggleControl" class="mr-8">
+      <button mat-button (click)="changeTheme()" matTooltip="Thème visuel" aria-label="Changement de thème visuel">
+        <span class="iconify" data-icon="mdi:theme-light-dark"></span>
+      </button>
+
+      <!-- <div>
+        <mat-icon >brightness_5</mat-icon>
+        <mat-slide-toggle  >
         </mat-slide-toggle>
         <mat-icon>bedtime</mat-icon>
-      </div>
+      </div> -->
       <button mat-icon-button  routerLink="/home" matTooltip="Acceuil" aria-label="Lien vers l'acceuil">
         <a routerLink="/home"></a>
         <mat-icon>home</mat-icon>

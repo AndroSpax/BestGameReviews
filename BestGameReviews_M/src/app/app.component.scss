@@ -5,6 +5,17 @@
   flex-shrink: 0;
   flex-grow: 0;
 }
+
+.toolbar{
+  border-top: 10px double;
+  min-height: 100px;
+  align-items: center;
+}
+
+.mat-toolbar-row {
+  height: 100px;
+}
+
 .logoImg {
   width: 80px;
   border: white solid 3px;
@@ -15,6 +26,7 @@
 .menu-spacer {
   flex: 1 1 auto;
 }
+
 
 .mat-menu-content:not(:empty) {
   display: flex;
@@ -33,4 +45,11 @@
   text-decoration: none;
 }
 
+.material-icons, .iconify {
+  font-size: 30px
 
+}
+
+.lightMode {
+  background-color: #d8d7d9;
+}

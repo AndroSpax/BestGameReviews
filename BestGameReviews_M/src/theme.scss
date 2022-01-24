@@ -1,53 +1,45 @@
-// // @use 'palette-helper';
-// @use '@angular/material' as mat;
+@use '@angular/material' as mat;
 
-// @include mat.core();
+@include mat.core();
 
+// Define a light theme
+$light-primary: mat.define-palette(mat.$teal-palette, 900);
+$light-accent: mat.define-palette(mat.$purple-palette, 600);
+$light-warn: mat.define-palette(mat.$red-palette,700);
+$light-theme: mat.define-light-theme((
+  color: (
+    primary: $light-primary,
+    accent: $light-accent,
+    warn: $light-warn
+  )
+));
 
-// // Define a light theme
-// $light-primary: mat.define-palette(mat.$teal-palette, 900);
-// $light-accent: mat.define-palette(mat.$purple-palette, 600);
-// $light-warn: mat.define-palette(mat.$red-palette,700);
-// $light-theme: mat.define-light-theme((
-//   color: (
-//     primary: $light-primary,
-//     accent: $light-accent,
-//     warn: $light-warn
-//   )
-// ));
+//Define a dark theme
+$dark-primary: mat.define-palette(mat.$teal-palette, 200);
+$dark-accent: mat.define-palette(mat.$purple-palette, 200);
+$dark-warn: mat.define-palette(mat.$red-palette,700);
 
-// // // $light-theme: palette-helper.modify-background($light-theme, white);
-// // // $light-theme-background-color:#FFFFFF;
+$dark-theme: mat.define-dark-theme((
+  color: (
+    primary: $dark-primary,
+    accent: $dark-accent,
+    warn: $dark-warn
+  )
+));
 
-// // Define a dark theme
-// // $dark-primary: mat.define-palette(mat.$teal-palette, 200);
-// // $dark-accent: mat.define-palette(mat.$purple-palette, 200);
-// // $dark-warn: mat.define-palette(mat.$red-palette,700);
-
-// // $dark-theme: mat.define-dark-theme((
-// //   color: (
-// //     primary: $dark-primary,
-// //     accent: $dark-accent,
-// //     warn: $dark-warn
-// //   )
-// // ));
-// $dark-primary: mat-palette($mat-deep-purple,600);
-// $dark-accent: mat-palette($mat-pink,100);
-// $dark-warn: mat-palette($mat-red,100);
-// // // $dark-theme: palette-helper.modify-background($dark-theme, #202124);
-// $dark-theme: mat-dark-theme($dark-primary,$dark-accent,$dark-warn);
-// // Apply the dark theme by default
-// // @include mat.all-component-themes($dark-theme);
-// // @include mat.button-theme($dark-theme);
-// @include angular-material-theme($dark-theme);
+@include mat.all-component-themes($dark-theme);
 
 
-// // Apply the light theme only when the `.my-light-theme` CSS class is applied
-// // to an ancestor element of the components (such as `body`).
-// .light-theme {
-//  @include mat.all-component-themes($light-theme);
-//  @include mat.button-theme($light-theme);
-// }
+// Apply the light theme only when the `.my-light-theme` CSS class is applied
+// to an ancestor element of the components (such as `body`).
+.lightMode {
+ @include mat.all-component-themes($light-theme);
+
+}
+
+.darkMode {
+  @include mat.all-component-themes($dark-theme);
+}
 
 
 
