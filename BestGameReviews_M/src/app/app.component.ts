@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { DataService } from './data.service';
 import { Subscription } from 'rxjs';
