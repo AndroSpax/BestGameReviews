@@ -3,52 +3,89 @@
  */
 package com.bestgamesreviews.controller;
 
-import com.bestgamesreviews.entity.Joueur;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.bestgamesreviews.entity.Joueur;
+import com.bestgamesreviews.entity.Utilisateur;
 import com.bestgamesreviews.service.JoueurService;
 import com.bestgamesreviews.service.JoueurServiceImpl;
+import com.bestgamesreviews.service.ModerateurService;
+import com.bestgamesreviews.service.ModerateurServiceImpl;
 
 /**
- * @author Marielle Machael Rudolph 
+ * Controller pour gérer tous les intéraction des utilisateurs
+ * 
+ * @author Marielle Machael Rudolph
  *
  */
 @RestController
 public class UserController {
 
-    @Autowired
-    JoueurService joueurService = new JoueurServiceImpl();
+	@Autowired
+	JoueurService joueurService = new JoueurServiceImpl();
+	@Autowired
+	ModerateurService moderateurService = new ModerateurServiceImpl();
 
-    public UserController() {
-        // TODO Auto-generated constructor stub
-    }
+	public UserController() {
 
-    /*TODO : Exemple requête JSON
-     {
-  "id":"",
-  "pseudo": "Jean Luc Pi",
-  "motDePasse": "mdppp",
-  "email": "jl@picard.frr",
-  "dateDenaissance": ""
 	}
-     */
-    @PostMapping("/api/inscription/")
-    public ResponseEntity<?> inscriptionJoueur(@RequestBody Joueur joueur){
-    	
-        Map<String, Joueur> response = new HashMap<>();
-        
-        try {
-        	;
-            response.put("joueur", joueurService.add(joueur)); //joueur
-        } catch (Exception e) {
-            response.put("error", null);
-            return ResponseEntity.status(409).body(response);
-        }
-        return  ResponseEntity.status(201).body(response);
-    }
+
+	/**
+	 * Permet à un joueur de s'inscrire
+	 * 
+	 * @param joueur
+	 * @return
+	 */
+	@PostMapping("/api/inscription/")
+	public ResponseEntity<?> inscriptionJoueur(@RequestBody Joueur joueur) {
+
+		Map<String, Joueur> response = new HashMap<>();
+
+		try {
+			response.put("joueur", joueurService.addJoueur(joueur)); // joueur
+		} catch (Exception e) {
+			response.put("error", null);
+			return ResponseEntity.status(409).body(response);
+		}
+		return ResponseEntity.status(201).body(response);
+	}
+
+	/**
+	 * Permet à un utilisateur de se connecter avec un pseudo / mot de passe !
+	 * 
+	 * @param Map<String, String> credentials
+	 * @return
+	 */
+	@PostMapping("/api/connexion/")
+	public ResponseEntity<?> connexion(@RequestBody Map<String, String> credentials) {
+
+		Map<String, Optional<?>> response = new HashMap<>();
+		try {
+			Utilisateur moderateur = moderateurService.findModerateur(credentials.get("pseudo"), credentials.get("motDePasse"));
+			if (moderateur.equals(null)) {
+				Utilisateur joueur = joueurService.findJoueur(credentials.get("pseudo"), credentials.get("motDePasse"));
+				if (joueur != null) {
+					response.put("Sucess", Optional.of(joueur));
+				}
+			}else if (!moderateur.equals(null)) {
+				response.put("Sucess", Optional.of(moderateur));
+			}
+			response.put("nothing was found", null);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			response.put("error", null);
+			return ResponseEntity.status(409).body(response);
+		}
+		return ResponseEntity.status(201).body(response);
+	}
+
 }

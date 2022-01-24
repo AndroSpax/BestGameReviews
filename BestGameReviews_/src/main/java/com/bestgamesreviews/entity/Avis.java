@@ -14,8 +14,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- *  Un avis est mis sur un jeu
- *	Un avis est déposé par un joueur
+ * Un avis est mis sur un jeu Un avis est déposé par un joueur
+ * 
  * @author Marielle Machael Rudolph
  */
 
@@ -25,32 +25,32 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Avis {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+	@GenericGenerator(name = "native", strategy = "native")
+	private Long id;
 
-    private String description;
-    private LocalDate dateEnvoi;
-    private Float note;
-    private LocalDate dateModeration;
+	private String description;
+	private LocalDate dateEnvoi;
+	private Float note;
+	private LocalDate dateModeration;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "jeux_id")
-    private Jeux jeu;
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "jeux_id")
+	private Jeux jeu;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "joueur_id")
-    private Joueur joueur;
-    
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "moderateur_id")
-    private Moderateur moderateur;
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "joueur_id")
+	private Joueur joueur;
 
-    /**
-     * Empty constructor
-     */
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "moderateur_id")
+	private Moderateur moderateur;
 
-    public Avis() {
-    }
+	/**
+	 * Empty constructor
+	 */
+
+	public Avis() {
+	}
 }

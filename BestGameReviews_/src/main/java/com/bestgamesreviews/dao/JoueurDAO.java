@@ -7,10 +7,18 @@ import com.bestgamesreviews.entity.Joueur;
 
 /**
  * Interface de persistence des entités Joueur
- * @author Marielle Michael Rudolph 
+ * 
+ * @author Marielle Michael Rudolph
  *
  */
 @Repository
 public interface JoueurDAO extends JpaRepository<Joueur, Long> {
+
+	/**
+	 * Trouver un jouer par son pseudo
+	 * @param Pseudo pseudo
+	 * @return Joueur joueur
+	 */
+	Joueur findByPseudo(String pseudo);
 
 }
