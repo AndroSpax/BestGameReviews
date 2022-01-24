@@ -14,11 +14,4 @@ import com.bestgamesreviews.entity.Joueur;
 @Repository
 public interface JoueurDAO extends JpaRepository<Joueur, Long> {
 
-	/**
-	 * Trouver un jouer par son pseudo
-	 * @param Pseudo pseudo
-	 * @return Joueur joueur
-	 */
-	Joueur findByPseudo(String pseudo);
-
 }

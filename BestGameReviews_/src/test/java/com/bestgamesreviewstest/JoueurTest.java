@@ -1,4 +1,4 @@
-package mokitotest;
+package com.bestgamesreviewstest;
 
 import static org.junit.jupiter.api.Assertions.fail;
 

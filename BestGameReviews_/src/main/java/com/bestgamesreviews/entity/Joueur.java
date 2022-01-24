@@ -17,8 +17,11 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,16 +36,12 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @Entity
-//@Table(name="joueur")
-//@DiscriminatorValue("P")
 public class Joueur extends Utilisateur {
 
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-//	@GenericGenerator(name = "native", strategy = "native")
-//	protected Long id;
+	@NotEmpty(message = "Une date de naissance est indispensable")
     private LocalDate dateDenaissance;
 
+	@JsonIgnore
     @OneToMany(mappedBy = "joueur", cascade = CascadeType.PERSIST)
     private List<Avis> listeAvis = new ArrayList<>();
 

@@ -55,15 +55,20 @@ public class AvisController {
 		Avis response = avisService.addAvis(avis);
 		return ResponseEntity.status(200).body(response);
 	}
-	
-	//TODO : a vérifier
-	@PutMapping("/valider-avis/{id}")
-	public ResponseEntity<?> validerAvis(@PathVariable Long id, @RequestBody Avis avis ) {
-		Avis response = avisService.validateAvis(avis);
+
+	@PutMapping("/valider-avis/")
+	public ResponseEntity<?> validerAvis(@RequestBody Avis avis) {
+		Map<String, Avis> response = new HashMap<>();
+		try {
+			System.out.println( " it works ");
+			response.put("sucess", avisService.validateAvis(avis));
+		} catch (Exception e) {
+			response.put("echec", null);
+		}
 		return ResponseEntity.status(200).body(response);
 	}
 
-	//TODO: à vérifier
+	// TODO: à vérifier
 	@DeleteMapping("/supprimer-avis/{id}")
 	public ResponseEntity<?> supprimerAvis(@PathVariable Long id) {
 		String response = avisService.deleteAvis(id);

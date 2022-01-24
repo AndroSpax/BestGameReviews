@@ -4,6 +4,7 @@
 package com.bestgamesreviews.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -28,8 +29,13 @@ public abstract class Utilisateur {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
 	@GenericGenerator(name = "native", strategy = "native")
 	protected Long id;
+	@Column(unique = true)
+	@NotEmpty(message = "Un pseudo est indispensable")
 	protected String pseudo;
+	@NotEmpty(message = "Un mot de passe est indispensable")
 	protected String motDePasse;
+	@Column(unique = true)
+	@NotEmpty(message = "Un email est indispensable")
 	protected String email;
 
 	/**

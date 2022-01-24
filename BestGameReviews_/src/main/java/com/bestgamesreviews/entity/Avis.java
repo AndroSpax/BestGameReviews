@@ -5,7 +5,14 @@ package com.bestgamesreviews.entity;
 
 import java.time.LocalDate;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -30,6 +37,7 @@ public class Avis {
 	@GenericGenerator(name = "native", strategy = "native")
 	private Long id;
 
+	@NotEmpty(message = "Une description est indispensable")
 	private String description;
 	private LocalDate dateEnvoi;
 	private Float note;
@@ -39,11 +47,11 @@ public class Avis {
 	@JoinColumn(name = "jeux_id")
 	private Jeux jeu;
 
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "joueur_id")
 	private Joueur joueur;
 
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "moderateur_id")
 	private Moderateur moderateur;
 

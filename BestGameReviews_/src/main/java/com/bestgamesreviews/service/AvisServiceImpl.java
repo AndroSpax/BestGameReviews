@@ -21,20 +21,34 @@ public class AvisServiceImpl implements AvisService {
 
 	@Override
 	public Avis addAvis(Avis avis) {
-		// TODO : vérifier que il y a pas de doublon
-		return avisDAO.save(avis);
+		try {
+			return avisDAO.save(avis);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
 	public Avis validateAvis(Avis avis) {
-		// TODO : doit vérifier que l'objet n'a pas d'attribut null
-		return avisDAO.save(avis);
+		try {
+			if (avisDAO.findById(avis.getId()) != null) {
+				return avisDAO.save(avis);
+			} else {
+				return null;
+			}
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	@Override
 	public String deleteAvis(Long id) {
-		avisDAO.deleteById(id);
-		return "Avis " + id + " supprimée";
+		try {
+			avisDAO.deleteById(id);
+			return "Avis " + id + " supprimée";
+		} catch (Exception e) {
+			return "Supression de l'avis " + id + " impossible ";
+		}
 	}
-
 }

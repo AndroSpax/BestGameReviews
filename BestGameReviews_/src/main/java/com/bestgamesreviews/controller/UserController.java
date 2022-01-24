@@ -42,8 +42,8 @@ public class UserController {
 	/**
 	 * Permet à un joueur de s'inscrire
 	 * 
-	 * @param joueur
-	 * @return
+	 * @param Joueur joueur
+	 * @return ResponseEntity <Map<String, Joueur>>
 	 */
 	@PostMapping("/api/inscription/")
 	public ResponseEntity<?> inscriptionJoueur(@RequestBody Joueur joueur) {
@@ -51,10 +51,19 @@ public class UserController {
 		Map<String, Joueur> response = new HashMap<>();
 
 		try {
-			response.put("joueur", joueurService.addJoueur(joueur)); // joueur
+			Joueur j = joueurService.addJoueur(joueur);
+			if (j != (null)) {
+				response.put("joueur", j);
+			} else {
+				response.put("Opération inpossible", null);
+			}
+
 		} catch (Exception e) {
 			response.put("error", null);
 			return ResponseEntity.status(409).body(response);
+		}
+		if (response.containsKey("Opération inpossible")) {
+			return ResponseEntity.status(400).body(response);
 		}
 		return ResponseEntity.status(201).body(response);
 	}
@@ -63,20 +72,21 @@ public class UserController {
 	 * Permet à un utilisateur de se connecter avec un pseudo / mot de passe !
 	 * 
 	 * @param Map<String, String> credentials
-	 * @return
+	 * @return ResponseEntity <Map<String, Joueur>>
 	 */
 	@PostMapping("/api/connexion/")
 	public ResponseEntity<?> connexion(@RequestBody Map<String, String> credentials) {
 
 		Map<String, Optional<?>> response = new HashMap<>();
 		try {
-			Utilisateur moderateur = moderateurService.findModerateur(credentials.get("pseudo"), credentials.get("motDePasse"));
+			Utilisateur moderateur = moderateurService.findModerateur(credentials.get("pseudo"),
+					credentials.get("motDePasse"));
 			if (moderateur.equals(null)) {
 				Utilisateur joueur = joueurService.findJoueur(credentials.get("pseudo"), credentials.get("motDePasse"));
 				if (joueur != null) {
 					response.put("Sucess", Optional.of(joueur));
 				}
-			}else if (!moderateur.equals(null)) {
+			} else if (!moderateur.equals(null)) {
 				response.put("Sucess", Optional.of(moderateur));
 			}
 			response.put("nothing was found", null);

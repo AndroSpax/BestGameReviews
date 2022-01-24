@@ -22,17 +22,18 @@ public class JoueurServiceImpl implements JoueurService {
 
 	@Override
 	public Joueur addJoueur(Joueur joueur) {
-		//en cours de modification
-		if(findPseudo(joueur.getPseudo())) {
+
+		try {
 			return joueurDAO.save(joueur);
+		} catch (Exception e) {
+			return null;
 		}
-		return null;
 	}
 
 	@Override
 	public Joueur findJoueur(String pseudo, String password) {
 
-		if (!joueurDAO.findAll().isEmpty()){
+		if (!joueurDAO.findAll().isEmpty()) {
 			for (Joueur j : joueurDAO.findAll()) {
 				if (j.getPseudo().equals(pseudo)) {
 					return j;
@@ -46,17 +47,9 @@ public class JoueurServiceImpl implements JoueurService {
 	public Optional<Joueur> find(Long id) {
 
 		Optional<Joueur> joueur = joueurDAO.findById(id);
-		if (joueur != null) {
+		if (!joueur.equals(null)) {
 			return joueur;
 		}
 		return null;
-	}
-	
-	public boolean findPseudo(String pseudo) {
-		if(joueurDAO.findByPseudo(pseudo) != null) {
-			return true;
-		}
-		System.out.println(pseudo + " n'a pas été trouver");
-		return false;
 	}
 }
