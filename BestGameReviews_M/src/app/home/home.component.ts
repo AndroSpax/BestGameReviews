@@ -10,10 +10,11 @@ import { Subscription } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
 
-  theme: string = "darkMode";
+  theme: string = "";
   subscription = new Subscription;
 
   constructor(private data: DataService) { }
+  //constructor(){};
 
   ngOnInit(): void {
     this.subscription = this.data.currentTheme.subscribe(theme => this.theme = theme)
@@ -23,7 +24,6 @@ export class HomeComponent implements OnInit {
     if (this.subscription != null){
       this.subscription.unsubscribe();
     }
-
   }
 
 }

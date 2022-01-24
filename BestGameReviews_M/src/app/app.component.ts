@@ -4,6 +4,7 @@ import { DataService } from './data.service';
 import { Subscription } from 'rxjs';
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,10 +15,11 @@ export class AppComponent {
 
 
 
-  otherTheme: string = "darkMode";
+  otherTheme: string = "";
   subscription = new Subscription;
 
   constructor(private data: DataService){};
+  // constructor(){};
 
   ngOnInit(){
     this.subscription = this.data.currentTheme.subscribe(theme => this.otherTheme = theme);

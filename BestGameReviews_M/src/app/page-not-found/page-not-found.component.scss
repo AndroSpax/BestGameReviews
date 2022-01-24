@@ -1,7 +1,7 @@
 .div-notFound{
   // margin-top: 50vh; /* poussé de la moitié de hauteur de viewport */
   // transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
-
+  box-sizing: border-box;
 }
 
 .notFound {
@@ -33,6 +33,8 @@
 .notFound-btn-item {
   border-radius: 50px;
   padding: 1em;
+  height: 60px;
+  width: 200px;
 }
 
 .notFound-btn-item-a {
