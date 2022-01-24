@@ -9,20 +9,20 @@ import { Subscription } from 'rxjs';
 })
 export class ConnexionComponent implements OnInit {
 
-  theme: string = "darkMode";
-  subscription = new Subscription;
+  // theme: string = "darkMode";
+  // subscription = new Subscription;
 
-  constructor(private data: DataService) { }
+  // constructor(private data: DataService) { }
 
   ngOnInit(): void {
-    this.subscription = this.data.currentTheme.subscribe(theme => this.theme = theme)
+  //   this.subscription = this.data.currentTheme.subscribe(theme => this.theme = theme)
   }
 
-  ngOnDestroy(){
-    if (this.subscription != null){
-      this.subscription.unsubscribe();
-    }
+  // ngOnDestroy(){
+  //   if (this.subscription != null){
+  //     this.subscription.unsubscribe();
+  //   }
 
-  }
+  // }
 
 }

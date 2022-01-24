@@ -4,6 +4,7 @@ import { MaterialModule } from '../material.module';
 import { JeuxRoutingModule } from './jeux-routing.module';
 import { ListeJeuxComponent } from './liste-jeux/liste-jeux.component';
 import { AjouterJeuxComponent } from './ajouter-jeux/ajouter-jeux.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { AjouterJeuxComponent } from './ajouter-jeux/ajouter-jeux.component';
   imports: [
     CommonModule,
     JeuxRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule
   ]
 })
 export class JeuxModule { }

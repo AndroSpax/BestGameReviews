@@ -6,6 +6,7 @@ import { AjouterAvisComponent } from './ajouter-avis/ajouter-avis.component';
 import { ListeAvisComponent } from './liste-avis/liste-avis.component';
 
 import { MaterialModule } from '../material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 //example of eager loading
 // export const avisModuleRoutes: Routes = [{ path:'', component:ListeAvisComponent}];
@@ -18,7 +19,8 @@ import { MaterialModule } from '../material.module';
   imports: [
     CommonModule,
     AvisRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule
   ]
 })
 export class AvisModule { }

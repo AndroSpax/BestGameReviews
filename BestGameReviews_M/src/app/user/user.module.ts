@@ -6,6 +6,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 
 import { MaterialModule } from '../material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,8 @@ import { MaterialModule } from '../material.module';
     CommonModule,
     UserRoutingModule,
     MaterialModule,
+    FlexLayoutModule
+
   ]
 })
 export class UserModule { }
