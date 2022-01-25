@@ -28,7 +28,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name ="moderateur")
-@DiscriminatorValue("F")
 public class Moderateur extends Utilisateur{
 
 
