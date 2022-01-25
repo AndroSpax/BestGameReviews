@@ -16,6 +16,8 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,6 +32,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
+
 public class Avis {
 
 	@Id
@@ -43,6 +46,7 @@ public class Avis {
 	private Float note;
 	private LocalDate dateModeration;
 
+	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "jeux_id")
 	private Jeux jeu;
@@ -61,5 +65,29 @@ public class Avis {
 
 	public Avis() {
 	}
+
+	/**
+	 * pour la création
+	 * @param description
+	 * @param dateEnvoi
+	 * @param note
+	 * @param dateModeration
+	 * @param jeu
+	 * @param joueur
+	 * @param moderateur
+	 */
+	public Avis(@NotEmpty(message = "Une description est indispensable") String description, LocalDate dateEnvoi,
+			Float note, LocalDate dateModeration, Jeux jeu, Joueur joueur, Moderateur moderateur) {
+		super();
+		this.description = description;
+		this.dateEnvoi = dateEnvoi;
+		this.note = note;
+		this.dateModeration = dateModeration;
+		this.jeu = jeu;
+		this.joueur = joueur;
+		this.moderateur = moderateur;
+	}
+	
+	
 }
 

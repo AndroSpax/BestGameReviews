@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.bestgamesreviews.dao.UtilisateurDAO;
 import com.bestgamesreviews.entity.Joueur;
 import com.bestgamesreviews.entity.Utilisateur;
+import com.bestgamesreviews.exception.UtilisateurException;
 
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -47,6 +48,19 @@ public class UtilisateurServiceImpl implements IUtilisateurService{
 	        user.setPseudo(userCreateRequest.getPseudo());
 	        user.setMotDePasse(passwordEncoders.encode(userCreateRequest.getMotDePasse()));
 	        userRepository.save(user);
+	}
+
+	@Override
+	public Utilisateur persiste(Utilisateur utilisateur) throws UtilisateurException {
+		if (!"".equals(utilisateur.getEmail().trim())  && utilisateur.getEmail() != null
+			&&	!"".equals(utilisateur.getMotDePasse().trim())  && utilisateur.getMotDePasse() != null
+			&&	!"".equals(utilisateur.getPseudo().trim())  && utilisateur.getPseudo() != null
+				) {
+			
+		} else {
+				throw new UtilisateurException("L'utilisateur que vous tentez de persister ne contient pas assez de paramètre!");
+		}
+		return null;
 	}
 
 }

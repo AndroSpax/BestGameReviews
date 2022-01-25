@@ -26,7 +26,7 @@ import com.bestgamesreviews.service.AvisServiceImpl;
  *
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("api")
 public class AvisController {
 
 	@Autowired
@@ -47,16 +47,16 @@ public class AvisController {
 			response.put("error", null);
 			return ResponseEntity.status(409).body(response);
 		}
-		return ResponseEntity.status(201).body(response);
-	}
-
-	@PostMapping("/ajouter-avis/")
-	public ResponseEntity<?> ajouterAvis(@RequestBody Avis avis) {
-		Avis response = avisService.addAvis(avis);
 		return ResponseEntity.status(200).body(response);
 	}
 
-	@PutMapping("/valider-avis/")
+	@PostMapping("/ajouter-avis")
+	public ResponseEntity<?> ajouterAvis(@RequestBody Avis avis) {
+		Avis response = avisService.addAvis(avis);
+		return ResponseEntity.status(201).body(response);
+	}
+
+	@PutMapping("/valider-avis")
 	public ResponseEntity<?> validerAvis(@RequestBody Avis avis) {
 		Map<String, Avis> response = new HashMap<>();
 		try {

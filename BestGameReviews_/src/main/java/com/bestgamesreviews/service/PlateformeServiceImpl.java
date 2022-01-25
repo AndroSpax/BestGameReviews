@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bestgamesreviews.dao.PlateformeDAO;
 import com.bestgamesreviews.entity.Plateforme;
+import com.bestgamesreviews.exception.PlateformeException;
 
 /**
  * Implémentation de PlateformeService
@@ -28,6 +29,16 @@ public class PlateformeServiceImpl implements PlateformeService {
 	@Override
 	public List<Plateforme> getAll() {
 	return dao.findAll();
+	}
+
+	@Override
+	public Plateforme persiste(Plateforme plateforme) throws PlateformeException {
+		if (!"".equals(plateforme.getNom().trim()) && plateforme.getNom().trim() != null) {
+			
+		} else {
+			throw new PlateformeException("La plateforme que vous tentez de persister ne contient pa de nom!");
+		}
+		return null;
 	}
 
 }

@@ -1,6 +1,11 @@
 package com.bestgamesreviews.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.bestgamesreviews.dao.GenreDAO;
+import com.bestgamesreviews.entity.Genre;
+import com.bestgamesreviews.exception.GenreException;
 
 /**
  * Implémentation de GenreService
@@ -8,6 +13,18 @@ import org.springframework.stereotype.Service;
  *
  */
 @Service
-public class GenreServiceImpl {
+public class GenreServiceImpl implements GenreService{
+	@Autowired
+	GenreDAO genreDAO;
+
+	@Override
+	public Genre persiste(Genre genre) throws GenreException {
+		if (!"".equals(genre.getNom().trim() )&& genre.getNom() != null) {
+			genreDAO.save(genre);
+		} else {
+			throw new GenreException("Le genre que vous tentez de persister ne contient pas de nom!");
+		}
+		return null;
+	}
 
 }

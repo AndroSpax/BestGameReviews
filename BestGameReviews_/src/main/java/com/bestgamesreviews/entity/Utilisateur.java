@@ -52,4 +52,21 @@ public abstract class Utilisateur implements UserDetails {
 
 	public Utilisateur() {
 	}
+
+	/**
+	 * pour la création
+	 * @param pseudo
+	 * @param motDePasse
+	 * @param email
+	 */
+	public Utilisateur(@NotEmpty(message = "Un pseudo est indispensable") String pseudo,
+			@NotEmpty(message = "Un mot de passe est indispensable") String motDePasse,
+			@NotEmpty(message = "Un email est indispensable") String email) {
+		super();
+		this.pseudo = pseudo;
+		this.motDePasse = motDePasse;
+		this.email = email;
+	}
+	
+	
 }

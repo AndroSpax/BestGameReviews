@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.bestgamesreviews.dao.AvisDAO;
 import com.bestgamesreviews.entity.Avis;
+import com.bestgamesreviews.exception.AvisException;
 
 @Service
 public class AvisServiceImpl implements AvisService {
@@ -51,4 +52,15 @@ public class AvisServiceImpl implements AvisService {
 			return "Supression de l'avis " + id + " impossible ";
 		}
 	}
+
+	@Override
+	public Avis persiste(Avis avis) throws AvisException {
+		if (avis.getJoueur() != null) {
+			avis = avisDAO.save(avis);
+		}else {
+			throw new AvisException("Cette avis n'est associé à aucun joueur");
+		}
+		return avis;
+	}
+	
 }

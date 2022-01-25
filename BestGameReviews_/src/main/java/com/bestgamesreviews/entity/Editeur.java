@@ -36,12 +36,22 @@ public class Editeur {
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "editeur")
-	List<Jeux> listeJeux = new ArrayList<>();
+	private List<Jeux> listeJeux = new ArrayList<>();
 
 	/**
 	 * Empty constructor
 	 */
-
 	public Editeur() {
 	}
+
+	/**
+	 * pour la création
+	 * @param nom
+	 */
+	public Editeur(String nom) {
+		super();
+		this.nom = nom;
+	}
+	
+	
 }

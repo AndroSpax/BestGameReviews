@@ -100,4 +100,18 @@ public class Joueur extends Utilisateur {
 		return false;
 	}
 
+	/**
+	 * @param pseudo
+	 * @param motDePasse
+	 * @param email
+	 */
+	public Joueur(@NotEmpty(message = "Un pseudo est indispensable") String pseudo,
+			@NotEmpty(message = "Un mot de passe est indispensable") String motDePasse,
+			@NotEmpty(message = "Un email est indispensable") String email,LocalDate dateDenaissance) {
+		super(pseudo, motDePasse, email);
+		this.dateDenaissance = dateDenaissance;
+		
+	}
+	
+
 }
