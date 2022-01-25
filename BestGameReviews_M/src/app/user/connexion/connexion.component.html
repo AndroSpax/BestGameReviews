@@ -6,13 +6,13 @@
 
         <mat-form-field appearance="fill">
           <mat-label>Entrez votre email</mat-label>
-          <input matInput placeholder="ceci-est-un@example.com" [formControl]="$any(email)" required>
+          <input matInput placeholder="ceci-est-un@example.com" [formControl]="$any(email)" required email=true>
           <mat-error color="accent" *ngIf="!email.valid">Cet email est invalide</mat-error>
           <mat-error color="accent" *ngIf="email.hasError('required')">L'email est requis</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" >
           <mat-label>Entrez votre mot de passe</mat-label>
-            <input matInput required [type]="hide ? 'password' : 'text'">
+            <input matInput required placeholder="mot de passe" [type]="hide ? 'password' : 'text'">
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
