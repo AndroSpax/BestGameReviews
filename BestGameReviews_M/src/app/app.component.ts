@@ -1,6 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { DataService } from './data.service';
+import { DataService } from './services/data.service';
 import { Subscription } from 'rxjs';
 import { style } from '@angular/animations';
 
