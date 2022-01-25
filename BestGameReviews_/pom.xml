@@ -9,8 +9,8 @@
 		<version>2.6.3</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.BestGameReviews </groupId>
-	<artifactId>BestGameReviews </artifactId>
+	<groupId>com.bestgamereviews </groupId>
+	<artifactId>bestgamereviews </artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>BestGameReviews </name>
 	<description>Demo project for Spring Boot</description>
