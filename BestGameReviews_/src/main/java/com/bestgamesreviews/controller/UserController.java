@@ -3,6 +3,7 @@
  */
 package com.bestgamesreviews.controller;
 
+
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,6 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import javax.annotation.security.RolesAllowed;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bestgamesreviews.entity.Joueur;
@@ -38,6 +44,28 @@ public class UserController {
 	public UserController() {
 
 	}
+
+		/**
+    	 * gérer les rôles user et revoie un taken pour suivre l'utilisateut
+    	 * @return
+    	 */
+    	  @RolesAllowed("USER")
+    	   @RequestMapping("/*")
+    	   public String getUser()
+    	   {
+    	      return "Welcome User";
+    	   }
+
+    	  /**
+    		 * gérer les rôles Admin et revoie un taken pour suivre l'utilisateut
+    		 * @return
+    		 */
+    	   @RolesAllowed({"USER","ADMIN"})
+    	   @RequestMapping("/admin")
+    	   public String getAdmin()
+    	   {
+    	      return "Welcome Admin";
+    	   }
 
 	/**
 	 * Permet à un joueur de s'inscrire
