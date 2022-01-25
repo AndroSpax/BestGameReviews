@@ -7,6 +7,8 @@ import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,7 +33,10 @@ public class Plateforme {
     private Long id;
     private String nom;
 
-    @ManyToMany(mappedBy = "listePlateforme", cascade = CascadeType.PERSIST)
+    @JsonIgnore
+    @ManyToMany(cascade = {CascadeType.REMOVE})
+    @JoinTable(name = "jeux_plateformes", joinColumns = {@JoinColumn(name = "jeu_id")},
+    inverseJoinColumns = {@JoinColumn(name = "plateforme_id")})
     private List<Jeux> listeJeux = new ArrayList<>();
 
     /**
@@ -39,4 +44,15 @@ public class Plateforme {
      */
     public Plateforme() {
     }
+
+	/**
+	 * pour la création
+	 * @param nom
+	 */
+	public Plateforme(String nom) {
+		super();
+		this.nom = nom;
+	}
+    
+    
 }

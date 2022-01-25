@@ -3,6 +3,7 @@ package com.bestgamesreviews.service;
 import java.util.List;
 
 import com.bestgamesreviews.entity.Avis;
+import com.bestgamesreviews.exception.AvisException;
 
 /**
  * Interface de service des entités Avis
@@ -43,4 +44,11 @@ public interface AvisService {
 	 */
 	String deleteAvis(Long id);
 
+	/**
+	 * ajoute un avis en base
+	 * @param avis
+	 * @return
+	 * @throws AvisException 
+	 */
+	Avis persiste(Avis avis) throws AvisException;
 }

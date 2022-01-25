@@ -77,7 +77,7 @@ public class UserController {
 	 * @param Map<String, String> credentials
 	 * @return ResponseEntity <Map<String, Joueur>>
 	 */
-	@PostMapping("/api/connexion/")
+	@PostMapping("/api/connexion")
 	public ResponseEntity<?> connexion(@RequestBody Map<String, String> credentials) {
 
 		Map<String, Optional<?>> response = new HashMap<>();

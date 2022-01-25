@@ -1,5 +1,7 @@
 package com.bestgamesreviews.service;
 
+import com.bestgamesreviews.entity.Genre;
+import com.bestgamesreviews.exception.GenreException;
 
 /**
  * Interface de service des entités Genre
@@ -8,4 +10,12 @@ package com.bestgamesreviews.service;
  */
 public interface GenreService {
 
+	/**
+	 * persiste un genre en base si ce dernier contient bien un nom
+	 * il retourne un Objet Genre
+	 * @param genre
+	 * @return
+	 * @throws GenreException 
+	 */
+	Genre persiste(Genre genre) throws GenreException;
 }

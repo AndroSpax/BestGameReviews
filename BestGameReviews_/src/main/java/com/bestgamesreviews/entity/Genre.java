@@ -44,4 +44,16 @@ public class Genre {
 
 	public Genre() {
 	}
+
+
+	/**
+	 * @param nom
+	 */
+	public Genre(String nom) {
+		super();
+		this.nom = nom;
+	}
+	
+	
+	
 }

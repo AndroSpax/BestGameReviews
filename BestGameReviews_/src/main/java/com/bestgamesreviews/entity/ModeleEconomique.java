@@ -40,4 +40,15 @@ public class ModeleEconomique {
 
     public ModeleEconomique() {
     }
+
+	/**
+	 * Pour la création
+	 * @param nom
+	 */
+	public ModeleEconomique(String nom) {
+		super();
+		this.nom = nom;
+	}
+    
+    
 }

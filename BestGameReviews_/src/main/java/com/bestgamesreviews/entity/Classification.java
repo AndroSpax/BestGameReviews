@@ -6,6 +6,7 @@ package com.bestgamesreviews.entity;
 import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.boot.context.properties.ConstructorBinding;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -25,6 +26,7 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
+@ConstructorBinding
 public class Classification {
 
 	@Id
@@ -43,4 +45,14 @@ public class Classification {
 
 	public Classification() {
 	}
+
+	/**
+	 * pour la création
+	 * @param nom
+	 * @param listeJeux
+	 */
+	public Classification(String nom) {
+		this.nom = nom;
+	}
+	
 }

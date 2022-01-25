@@ -56,9 +56,7 @@ public class Jeux {
     @JoinColumn(name = "editeur")
     private Editeur editeur;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "jeux_plateformes", joinColumns = {@JoinColumn(name = "jeu")},
-            inverseJoinColumns = {@JoinColumn(name = "plateforme_id")})
+    @ManyToMany(mappedBy = "listeJeux") 
     private List<Plateforme> listePlateforme = new ArrayList<>();
 
     @ManyToOne(cascade = CascadeType.PERSIST)
@@ -72,5 +70,61 @@ public class Jeux {
     public Jeux() {
     }
 
+	/**
+	 * @param nom
+	 * @param description
+	 * @param dateSortie
+	 * @param image
+	 * @param listeAvis
+	 * @param classification
+	 * @param genre
+	 * @param editeur
+	 * @param listePlateforme
+	 * @param modeleEconomique
+	 */
+	public Jeux(String nom, String description, LocalDate dateSortie, String image, List<Avis> listeAvis,
+			Classification classification, Genre genre, Editeur editeur, List<Plateforme> listePlateforme,
+			ModeleEconomique modeleEconomique) {
+		super();
+		this.nom = nom;
+		this.description = description;
+		this.dateSortie = dateSortie;
+		this.image = image;
+		this.listeAvis = listeAvis;
+		this.classification = classification;
+		this.genre = genre;
+		this.editeur = editeur;
+		this.listePlateforme = listePlateforme;
+		this.modeleEconomique = modeleEconomique;
+	}
+
+	/**
+	 * pour la création
+	 * @param nom
+	 * @param description
+	 * @param dateSortie
+	 * @param image
+	 * @param classification
+	 * @param genre
+	 * @param editeur
+	 * @param listePlateforme
+	 * @param modeleEconomique
+	 */
+	public Jeux( String nom, String description, LocalDate dateSortie, String image,
+			Classification classification, Genre genre, Editeur editeur, List<Plateforme> listePlateforme,
+			ModeleEconomique modeleEconomique) {
+		super();
+		this.nom = nom;
+		this.description = description;
+		this.dateSortie = dateSortie;
+		this.image = image;
+		this.classification = classification;
+		this.genre = genre;
+		this.editeur = editeur;
+		this.listePlateforme = listePlateforme;
+		this.modeleEconomique = modeleEconomique;
+	}
+
+    
 
 }
