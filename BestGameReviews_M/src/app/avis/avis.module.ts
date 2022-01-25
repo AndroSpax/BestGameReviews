@@ -19,8 +19,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   imports: [
     CommonModule,
     AvisRoutingModule,
-    // MaterialModule,
-    // FlexLayoutModule
+    MaterialModule,
+    FlexLayoutModule
   ]
 })
 export class AvisModule { }

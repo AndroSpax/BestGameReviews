@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { Subscription } from 'rxjs';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service.service';
 
 @Component({
@@ -15,9 +14,19 @@ export class InscriptionComponent implements OnInit {
   // initialise le thème du user
   theme: string = "";
   subscription = new Subscription;
-
-  myForm: FormGroup;
-  email: AbstractControl;
+  dateNaissance= new Date(1600000000000);
+  password= "";
+  confirmPassword= "";
+  checkPasswordMismatchPassword : boolean = false;
+  form: any = {
+    pseudo: null,
+    email: null,
+    password: null,
+    confirmPassword: null
+  };
+  isSuccessful = false;
+  isSignUpFailed = false;
+  errorMessage = '';
   tomorrow = new Date();
 
 
@@ -26,13 +35,7 @@ export class InscriptionComponent implements OnInit {
 
 
 
-  constructor(private data: DataService, fb: FormBuilder) {
-    this.myForm = fb.group({
-      'email':['', Validators.required],
- });
-    this.email= this.myForm.controls['email'];
-    this.tomorrow.setDate(this.tomorrow.getDate());
-   };
+  constructor(private data: DataService, private authService: AuthService ) {};
 
   // onInit récupère le currentThème du data service
   ngOnInit(): void {
@@ -47,9 +50,9 @@ export class InscriptionComponent implements OnInit {
 
   // pour la validation du formulaire de connexion
   onSubmit(): void {
-    const { username, email, password } = this.form;
-
-    this.authService.register(username, email, password).subscribe(
+    const { pseudo, email, password, confirmPassword } = this.form;
+    const dateNaissance = this.dateNaissance;
+    this.authService.inscription(pseudo, email, dateNaissance, password, confirmPassword).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;
@@ -62,4 +65,13 @@ export class InscriptionComponent implements OnInit {
     );
   }
 
+  checkPasswordMismatch(input1 : HTMLInputElement, input2 : HTMLInputElement){
+
+    if (input1.value.trim() === input2.value.trim()){
+      this.checkPasswordMismatchPassword = true;
+    } else {
+     this.checkPasswordMismatchPassword = false;
+    }
+    return this.checkPasswordMismatchPassword;
+  }
 }
