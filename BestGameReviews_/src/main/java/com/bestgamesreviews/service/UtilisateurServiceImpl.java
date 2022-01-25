@@ -17,15 +17,16 @@ import com.bestgamesreviews.entity.Utilisateur;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
+
 @Service
 public class UtilisateurServiceImpl implements IUtilisateurService{
 
 	private final UtilisateurDAO userRepository;
     private final BCryptPasswordEncoder passwordEncoders;
 	
-    @Autowired
+    
 	public UtilisateurServiceImpl(UtilisateurDAO userRepository) {
-		super();
+		
 		this.userRepository = userRepository;
 		this.passwordEncoders = new BCryptPasswordEncoder();
 	}
