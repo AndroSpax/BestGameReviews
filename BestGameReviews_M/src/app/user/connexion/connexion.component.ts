@@ -32,7 +32,7 @@ export class ConnexionComponent implements OnInit {
 
   // onInit récupère le currentThème du data service
   ngOnInit(): void {
-    this.subscription = this.data.currentTheme.subscribe(theme => this.theme = theme)
+    // this.subscription = this.data.currentTheme.subscribe(theme => this.theme = theme);
   }
 
   ngOnDestroy(){

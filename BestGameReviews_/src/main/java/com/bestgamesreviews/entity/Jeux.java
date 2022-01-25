@@ -1,14 +1,13 @@
 /**
- * 
+ *
  */
 package com.bestgamesreviews.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -17,30 +16,61 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @author Marielle Machael Rudolph 
- *
+ * un jeu à une liste d'avis
+ * un jeu à une classification
+ * un jeu à un genre
+ * un jeu est produit par un éditeur
+ * un jeu peut être disponible sur plusieurs plateforme
+ * un jeu à un ModeleEconomque
+ * @author Marielle Machael Rudolph
  */
+
 @Getter
 @Setter
 @AllArgsConstructor
 @Entity
 public class Jeux {
- 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-	@GenericGenerator(name = "native", strategy = "native")
-	private Long id;
-	
-	private String nom;
-	private String description;
-	private LocalDate dateSortie;
-	private String image;
-	
-	/***
-	 * Empty constructor
-	 */
-	public Jeux() {
-	}
-	
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
+    private Long id;
+
+    private String nom;
+    private String description;
+    private LocalDate dateSortie;
+    private String image;
+
+    @OneToMany(mappedBy = "jeu", cascade = CascadeType.PERSIST)
+    private List<Avis> listeAvis = new ArrayList<>();
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "classification_id")
+    private Classification classification;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "genre_id")
+    private Genre genre;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "editeur")
+    private Editeur editeur;
+
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "jeux_plateformes", joinColumns = {@JoinColumn(name = "jeu")},
+            inverseJoinColumns = {@JoinColumn(name = "plateforme_id")})
+    private List<Plateforme> listePlateforme = new ArrayList<>();
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "modele_economique_id")
+    private ModeleEconomique modeleEconomique;
+
+    /***
+     * Empty constructor
+     */
+
+    public Jeux() {
+    }
+
 
 }
