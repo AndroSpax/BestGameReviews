@@ -39,7 +39,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name="joueur")
-@DiscriminatorValue("P")
 public class Joueur extends Utilisateur {
 
     private LocalDate dateDenaissance;

@@ -35,7 +35,7 @@ public abstract class Utilisateur implements UserDetails {
 	protected String email;
 
 	/**
-	 * 
+	 * Empty construtor
 	 */
 
 	public Utilisateur() {
