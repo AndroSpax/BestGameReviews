@@ -27,7 +27,8 @@ export class ConnexionComponent implements OnInit {
       'email':['', Validators.required]
     });
     this.email= this.myForm.controls['email'];
-   }
+
+   };
 
   // onInit récupère le currentThème du data service
   ngOnInit(): void {

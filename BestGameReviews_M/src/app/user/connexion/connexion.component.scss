@@ -1,24 +1,21 @@
 
 
 .mat-form-field {
-  margin-left: 8px;
-  width: 90%;
-  justify-content: center;
+  text-align: left;
+    width: 20em;
 }
 
 .formField {
   display: flex;
   flex-direction: column;
-  padding: 2em;
+  align-items: center;
   width: 30em;
-  margin-top: 35vh; /* poussé de la moitié de hauteur de viewport */
-  transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
-  justify-content: center;
+  margin-top: 10em;
 }
 
-form {
-  width: 50%;
-  margin: 0 auto;
+.myForm {
+  display: flex;
+  justify-content: center;
 }
 
 .connexionCard {
@@ -26,9 +23,10 @@ form {
 }
 
 .submitButton {
+  border-radius: 50px;
   padding: 1em;
   height: 60px;
-  width: 200px;
+  width: 110px;
 }
 
 .invalidForm{
@@ -36,7 +34,4 @@ form {
 }
 
 
-.myForm {
-  display: flex ;
-  justify-content: center;
-}
+
