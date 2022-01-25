@@ -23,10 +23,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 
-//@Entity
-//@Inheritance(strategy = InheritanceType.JOINED)
-@MappedSuperclass
-public abstract class Utilisateur {
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Utilisateur implements UserDetails{
 /*
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)

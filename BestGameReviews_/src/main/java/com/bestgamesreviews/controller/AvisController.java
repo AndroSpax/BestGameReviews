@@ -68,7 +68,6 @@ public class AvisController {
 		return ResponseEntity.status(200).body(response);
 	}
 
-	// TODO: à vérifier
 	@DeleteMapping("/supprimer-avis/{id}")
 	public ResponseEntity<?> supprimerAvis(@PathVariable Long id) {
 		String response = avisService.deleteAvis(id);
