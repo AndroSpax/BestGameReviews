@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { Subscription } from 'rxjs';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { AuthService } from 'src/app/services/auth.service.service';
 
 @Component({
   selector: 'app-inscription',
@@ -46,8 +46,20 @@ export class InscriptionComponent implements OnInit {
   }
 
   // pour la validation du formulaire de connexion
-  onSubmit(value:string): void {
-    console.log('you submitted value:', value);
+  onSubmit(): void {
+    const { username, email, password } = this.form;
+
+    this.authService.register(username, email, password).subscribe(
+      data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
   }
 
 }
