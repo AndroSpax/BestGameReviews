@@ -1,25 +1,13 @@
-<header class="mdc-top-app-bar mdc-top-app-bar--short mdc-top-app-bar--short-collapsed">
-  <mat-toolbar color="darck">
-    <button mat-icon-button>
-      <mat-icon>menu</mat-icon>
-    </button>
-    <mat-icon svgIcon="robot"></mat-icon>
-    <a mat-button routerLink="/home">
-      <h1>Accueil</h1>
-    </a>
-    <a routerLink="/manager" mat-button>
-      <h2>avis</h2>
-    </a>
-    <a routerLink="/manager" mat-button>
-      <h2>Jeux</h2>
-    </a>
-    <span class="flex-spacer"></span>
-    <button mat-icon-button>
-      <mat-icon>account_circle</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>lock_open</mat-icon>
-    </button>
-  </mat-toolbar>
-</header>
-<mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+<mat-toolbar color="primary" class="navbar">
+  <div>logo</div>
+  <div class="navLinks">
+    <span class="spanNav"><a [routerLink]="['/home'] ">Home </a></span>
+    <span class="spanNav"><a [routerLink]="['/home'] ">Home </a></span>
+    <span class="spanNav"><a [routerLink]="['/home'] ">Home </a></span>
+  </div>
+</mat-toolbar>
+
+
+<div id="content">
+  <router-outlet></router-outlet>
+</div>

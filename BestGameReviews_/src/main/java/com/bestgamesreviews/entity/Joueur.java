@@ -5,6 +5,7 @@ package com.bestgamesreviews.entity;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -20,6 +21,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.security.core.GrantedAuthority;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -32,6 +36,7 @@ import lombok.Setter;
  * @author Marielle Machael Rudolph 
  *
  */
+@SuppressWarnings("serial")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -42,6 +47,7 @@ public class Joueur extends Utilisateur {
     private LocalDate dateDenaissance;
 
 	@JsonIgnore
+
     @OneToMany(mappedBy = "joueur", cascade = CascadeType.PERSIST)
     private List<Avis> listeAvis = new ArrayList<>();
 
@@ -51,5 +57,47 @@ public class Joueur extends Utilisateur {
 
     public Joueur() {
     }
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }
