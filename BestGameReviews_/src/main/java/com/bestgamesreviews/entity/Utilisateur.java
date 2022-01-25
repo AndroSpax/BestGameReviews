@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,14 +18,15 @@ import lombok.Setter;
  * @author Marielle Machael Rudolph 
  *
  */
+@SuppressWarnings("serial")
 @Getter
 @Setter
 @AllArgsConstructor
 //@Entity
 //@Inheritance(strategy = InheritanceType.JOINED)
 @MappedSuperclass
-public abstract class Utilisateur {
-	
+public abstract class Utilisateur implements UserDetails{
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
 	@GenericGenerator(name = "native", strategy = "native")

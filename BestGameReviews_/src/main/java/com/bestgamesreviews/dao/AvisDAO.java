@@ -12,7 +12,7 @@ import com.bestgamesreviews.entity.Avis;
  * @author Marielle Michael Rudolph 
  * 
  */
-@Repository
+@RepositoryRestResource(exported = true)
 public interface AvisDAO extends JpaRepository<Avis, Long> {
 
 }

@@ -1,13 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+
+html,
+body {
+  height: 100%;
+}
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background: rgb(65,82,98);
-background: linear-gradient(45deg, rgba(65,82,98,1) 0%, rgba(30,31,40,1) 35%, rgba(4,17,66,1) 100%);
-  }
-
-.flex-spacer{
-flex : 1 1 auto;
+  background-color: #303030;
+  color:white;
 }
+.margin-top {
+  margin-top: 16px;
+}
+.horizontal-padding {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+.flex-spacer {
+  flex: 1 1 auto;
+}
+
+
+
+
