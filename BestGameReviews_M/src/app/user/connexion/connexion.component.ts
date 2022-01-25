@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { DataService } from 'src/app/data.service';
+import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../services/data.service';
 import { Subscription } from 'rxjs';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
