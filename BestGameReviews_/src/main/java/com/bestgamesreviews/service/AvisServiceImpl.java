@@ -17,7 +17,11 @@ public class AvisServiceImpl implements AvisService {
 
 	@Override
 	public List<Avis> findAll() {
-		return avisDAO.findAll();
+		try {
+			return avisDAO.findAll();
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	@Override
