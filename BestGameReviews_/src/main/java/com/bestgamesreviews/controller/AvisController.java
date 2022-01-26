@@ -4,6 +4,7 @@
 package com.bestgamesreviews.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,17 +54,11 @@ public class AvisController {
 	}
 
 	@GetMapping(value = "/liste-avis-dto")
-	public ResponseEntity<?> obtenirAvisDTO() {
-		Map<String, AvisDTO> response = new HashMap<>();
-		try {
-			for (AvisDTO avis : avisService.findAllDTO()) {
-				response.put(String.valueOf(avis.getId()), avis);
-			}
-		} catch (Exception e) {
-			response.put("error", null);
-			return ResponseEntity.status(409).body(response);
-		}
-		return ResponseEntity.status(200).body(response);
+	public List<AvisDTO> obtenirAvisDTO() {
+		Map<String, Object> response = new HashMap<>();
+
+				return avisService.findAllDTO();
+		
 	}
 
 	@PostMapping("/ajouter-avis")
