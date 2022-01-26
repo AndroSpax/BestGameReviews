@@ -56,11 +56,20 @@ public class UtilisateurServiceImpl implements IUtilisateurService{
 			&&	!"".equals(utilisateur.getMotDePasse().trim())  && utilisateur.getMotDePasse() != null
 			&&	!"".equals(utilisateur.getPseudo().trim())  && utilisateur.getPseudo() != null
 				) {
-			
+			this.userRepository.save(utilisateur);
 		} else {
 				throw new UtilisateurException("L'utilisateur que vous tentez de persister ne contient pas assez de paramètre!");
 		}
 		return null;
+	}
+
+	@Override
+	public Utilisateur getByEmail(Utilisateur utilisateur) {
+		Utilisateur user = userRepository.findByEmail(utilisateur.getEmail()).get(0);
+		if (user != null && !user.getEmail().trim().equals("") && user.getEmail() != null) {
+			utilisateur = user;
+		} 
+		return utilisateur;
 	}
 
 }

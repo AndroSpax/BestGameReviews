@@ -36,13 +36,12 @@ public class Classification {
 	private String nom;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "classification", cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "classification")
 	private List<Jeux> listeJeux= new ArrayList<>();
 
 	/**
 	 * Empty constructor
 	 */
-
 	public Classification() {
 	}
 

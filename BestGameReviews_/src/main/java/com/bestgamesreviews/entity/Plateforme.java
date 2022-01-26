@@ -34,9 +34,7 @@ public class Plateforme {
     private String nom;
 
     @JsonIgnore
-    @ManyToMany(cascade = {CascadeType.REMOVE})
-    @JoinTable(name = "jeux_plateformes", joinColumns = {@JoinColumn(name = "jeu_id")},
-    inverseJoinColumns = {@JoinColumn(name = "plateforme_id")})
+    @ManyToMany(mappedBy = "listePlateforme")
     private List<Jeux> listeJeux = new ArrayList<>();
 
     /**
@@ -54,5 +52,6 @@ public class Plateforme {
 		this.nom = nom;
 	}
     
+	
     
 }

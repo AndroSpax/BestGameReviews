@@ -41,25 +41,27 @@ public class Jeux {
     private LocalDate dateSortie;
     private String image;
 
-    @OneToMany(mappedBy = "jeu", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "jeu", cascade = CascadeType.REMOVE)
     private List<Avis> listeAvis = new ArrayList<>();
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne()
     @JoinColumn(name = "classification_id")
     private Classification classification;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne()
     @JoinColumn(name = "genre_id")
     private Genre genre;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne()
     @JoinColumn(name = "editeur")
     private Editeur editeur;
 
-    @ManyToMany(mappedBy = "listeJeux") 
+    @ManyToMany() 
+    @JoinTable(name = "jeux_plateformes", joinColumns = {@JoinColumn(name = "jeu_id")},
+    inverseJoinColumns = {@JoinColumn(name = "plateforme_id")})
     private List<Plateforme> listePlateforme = new ArrayList<>();
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne()
     @JoinColumn(name = "modele_economique_id")
     private ModeleEconomique modeleEconomique;
 
@@ -125,6 +127,24 @@ public class Jeux {
 		this.modeleEconomique = modeleEconomique;
 	}
 
+	/**
+	 * add plateforme into game
+	 * @param plateforme
+	 * @return
+	 */
+	public List<Plateforme> addPlateforme(Plateforme plateforme) {
+		this.listePlateforme.add(plateforme);
+		return this.listePlateforme;
+	}
     
+	/**
+	 * add avis into this game 
+	 * @param avis
+	 * @return
+	 */
+	public List<Avis> addPlateforme(Avis avis) {
+		this.listeAvis.add(avis);
+		return this.listeAvis;
+	}
 
 }

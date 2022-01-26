@@ -60,7 +60,7 @@ import lombok.AllArgsConstructor;
 @Controller
 public class InitController {
 	/**
-	 * init des service
+	 * init des services
 	 */
 	private final ClassificationService classificationServiceImpl;
 	private final GenreService genreServiceImpl;
@@ -70,74 +70,12 @@ public class InitController {
 	private final AvisService avisService;
 	private final JeuxService jeuxServiceImpl;
 	private final IUtilisateurService utilisateurServiceImpl;
-	
-	
-
-
 
 	// Dès que Spring a injecté tous les objets, il invoque ttes les méthodes
 	// annotées PostConstruct
-	//@PostConstruct
-	private void init() throws AvisException, GenreException, EditeurException, PlateformeException, ModeleEconomiqueException, UtilisateurException, JeuxException {
-		/*
-		 * Classification(String no)
-		 */
-		Classification classification = new Classification("Pegi12");
-		Classification classification1 = new Classification("Pegi16");
-
-		
-		
-			
-			try {
-				classification = classificationServiceImpl.persiste(classification);
-				classification1 = classificationServiceImpl.persiste(classification1);
-			} catch (ClassificationException e) {
-				e.printStackTrace();
-			}
-		
-		/*
-		 * Genre(String nom)
-		 */
-		Genre genre = new Genre("Combat");
-		Genre genre1 = new Genre("PlateForme");
-		// persiste en base
-		genre = genreServiceImpl.persiste(genre);
-		genre1 = genreServiceImpl.persiste(genre1);
-
-		/*
-		 * Editeur(String nom)
-		 */
-		Editeur editeur = new Editeur("UBISOFT");
-		Editeur editeur1 = new Editeur("EA Games");
-		// persiste en base
-		editeur = editeurServiceImpl.persiste(editeur);
-		editeur1 = editeurServiceImpl.persiste(editeur1);
-
-		/*
-		 * Plateforme(String nom)
-		 */
-		List<Plateforme> plateformes = new ArrayList<>();
-		Plateforme plateforme1 = new Plateforme("PlayStation2");
-		Plateforme plateforme2 = new Plateforme("PlayStation1");
-		// persiste en base
-		plateforme1 = plateformeServiceImpl.persiste(plateforme1);
-		plateforme2 = plateformeServiceImpl.persiste(plateforme2);
-		
-		/*
-		 * add plateforme into list
-		 */
-		plateformes.add(plateforme1);
-		plateformes.add(plateforme2);
-
-		/*
-		 * ModeleEconomique(String nom)
-		 */
-		ModeleEconomique modeleEconomique = new ModeleEconomique("Pay to play");
-		ModeleEconomique modeleEconomique1 = new ModeleEconomique("Free to play, pay to win");
-		// persiste en base
-		modeleEconomique = modeleEconomiqueImpl.persiste(modeleEconomique);
-		modeleEconomique1 = modeleEconomiqueImpl.persiste(modeleEconomique1);
-		
+	@PostConstruct
+	private void init() throws AvisException, GenreException, EditeurException, PlateformeException,
+			ModeleEconomiqueException, UtilisateurException, JeuxException, ClassificationException {
 
 		/*
 		 * Moderateur ( String pseudo, String motDePasse, String email,String
@@ -145,10 +83,6 @@ public class InitController {
 		 */
 		Utilisateur moderateur = new Moderateur("totoBG", "totoBG", "totoBG@gmail.com", "064646084536");
 		Utilisateur moderateur1 = new Moderateur("tataBG", "tataBG", "tataBG@gmail.com", "064646084538");
-		// persiste en base
-		moderateur = utilisateurServiceImpl.persiste(moderateur);
-		moderateur1 = utilisateurServiceImpl.persiste(moderateur1);
-
 
 		/*
 		 * Joueur(@NotEmpty(message = "Un pseudo est indispensable") String pseudo,
@@ -160,9 +94,47 @@ public class InitController {
 		 */
 		Utilisateur joueur = new Joueur("titiBG", "titiBG", "titiBG@gmail.com", LocalDate.now());
 		Utilisateur joueur1 = new Joueur("tutuBG", "tutuBG", "tutuBG@gmail.com", LocalDate.now());
-		// persiste en base
-		joueur = utilisateurServiceImpl.persiste(joueur);
-		joueur1 = utilisateurServiceImpl.persiste(joueur1);
+
+		/**
+		 * on doit vérifier si les email sont déjà en base de données
+		 */
+
+		/*
+		 * Classification(String no)
+		 */
+		Classification classification = new Classification("Pegi12");
+		Classification classification1 = new Classification("Pegi16");
+
+		/*
+		 * Genre(String nom)
+		 */
+		Genre genre = new Genre("Combat");
+		Genre genre1 = new Genre("PlateForme");
+
+		/*
+		 * Editeur(String nom)
+		 */
+		Editeur editeur = new Editeur("UBISOFT");
+		Editeur editeur1 = new Editeur("EA Games");
+
+		/*
+		 * Plateforme(String nom)
+		 */
+		List<Plateforme> plateformes = new ArrayList<>();
+		Plateforme plateforme1 = new Plateforme("PlayStation2");
+		Plateforme plateforme2 = new Plateforme("PlayStation1");
+
+		/*
+		 * add plateforme into list
+		 */
+		plateformes.add(plateforme1);
+		plateformes.add(plateforme2);
+
+		/*
+		 * ModeleEconomique(String nom)
+		 */
+		ModeleEconomique modeleEconomique = new ModeleEconomique("Pay to play");
+		ModeleEconomique modeleEconomique1 = new ModeleEconomique("Free to play, pay to win");
 
 		/*
 		 * Jeux(String nom, String description, LocalDate dateSortie, String image,
@@ -173,9 +145,45 @@ public class InitController {
 				classification, genre, editeur, plateformes, modeleEconomique1);
 		Jeux jeux2 = new Jeux("Medal of Honor", "jeux de rôle d'un alien qui veux quitter la terre", LocalDate.now(),
 				"src/img", classification1, genre1, editeur1, plateformes, modeleEconomique);
+
+		// persiste en base classification
+		classificationServiceImpl.persiste(classification);
+		classificationServiceImpl.persiste(classification1);
+
+		// persiste en base genre
+		genreServiceImpl.persiste(genre);
+		genreServiceImpl.persiste(genre1);
+
+		// persiste en base editeur
+		editeurServiceImpl.persiste(editeur);
+		editeurServiceImpl.persiste(editeur1);
+
+		// persiste en base modeleEco
+		modeleEconomiqueImpl.persiste(modeleEconomique);
+		modeleEconomiqueImpl.persiste(modeleEconomique1);
+
+		// persiste en base plateForme
+		plateformeServiceImpl.persiste(plateforme1);
+		plateformeServiceImpl.persiste(plateforme2);
+
+		// ajout des plateformes dans jeu
+		jeux.addPlateforme(plateforme2);
+		jeux.addPlateforme(plateforme1);
+
+		jeux2.addPlateforme(plateforme2);
+		jeux2.addPlateforme(plateforme1);
+
 		// persiste en base
-		jeux = jeuxServiceImpl.persiste(jeux);
-		jeux2 = jeuxServiceImpl.persiste(jeux2);
+		jeuxServiceImpl.persiste(jeux);
+		jeuxServiceImpl.persiste(jeux2);
+
+		// persiste en base moderateur
+		moderateur = verifId(moderateur);
+		moderateur1 = verifId(moderateur1);
+
+		// persiste en base joueur
+		joueur = verifId(joueur);
+		joueur1 = verifId(joueur1);
 
 		/*
 		 * Avis(@NotEmpty(message = "Une description est indispensable") String
@@ -187,9 +195,25 @@ public class InitController {
 		Avis avis1 = new Avis("c'est un deuxiéme avis", LocalDate.now(), 12.5F, LocalDate.now(), jeux2,
 				(Joueur) joueur1, (Moderateur) moderateur1);
 		// persiste en base
-				avis = avisService.persiste(avis);
-				avis1 = avisService.persiste(avis1);
-		
+		avisService.persiste(avis);
+		avisService.persiste(avis1);
 
 	}
+
+	/**
+	 * Methode qui verifi si il y à un utilisateur avec le même email.
+	 * !!!!!! ATTENTION !!!!!!! 
+	 * Fonction à utiliser que dans initControleur
+	 * @param utilisateur
+	 * @return
+	 * @throws UtilisateurException
+	 */
+	public Utilisateur verifId(Utilisateur utilisateur) throws UtilisateurException {
+		utilisateur = utilisateurServiceImpl.getByEmail(utilisateur);
+		if (!(utilisateur.getId() != null)) {
+			utilisateurServiceImpl.persiste(utilisateur);
+		}
+		return utilisateur;
+	}
+
 }

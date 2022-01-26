@@ -18,6 +18,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -43,18 +44,16 @@ import lombok.Setter;
 @Entity
 public class Joueur extends Utilisateur {
 
-	@NotEmpty(message = "Une date de naissance est indispensable")
+	
     private LocalDate dateDenaissance;
 
 	@JsonIgnore
-
-    @OneToMany(mappedBy = "joueur", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "joueur", cascade = CascadeType.REMOVE)
     private List<Avis> listeAvis = new ArrayList<>();
 
     /**
      * Empty constructor
      */
-
     public Joueur() {
     }
 
