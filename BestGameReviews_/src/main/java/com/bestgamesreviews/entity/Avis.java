@@ -47,16 +47,13 @@ public class Avis {
 	private LocalDate dateModeration;
 
 	@JsonIgnore
-	@ManyToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "jeux_id")
+	@ManyToOne()
 	private Jeux jeu;
 
-	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "joueur_id")
+	@ManyToOne()
 	private Joueur joueur;
 
-	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "moderateur_id")
+	@ManyToOne()
 	private Moderateur moderateur;
 
 	/**

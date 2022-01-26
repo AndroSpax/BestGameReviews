@@ -35,4 +35,11 @@ public interface IUtilisateurService {
 	 * @throws UtilisateurException 
 	  */
 	 Utilisateur persiste(Utilisateur utilisateur) throws UtilisateurException;
+	 
+	 /**
+	  * reorne un utilisateur en fonction de sont email
+	  * @param utilisateur
+	  * @return
+	  */
+	 Utilisateur getByEmail(Utilisateur utilisateur);
 }

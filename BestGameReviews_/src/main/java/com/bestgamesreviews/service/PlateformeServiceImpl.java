@@ -34,11 +34,11 @@ public class PlateformeServiceImpl implements PlateformeService {
 	@Override
 	public Plateforme persiste(Plateforme plateforme) throws PlateformeException {
 		if (!"".equals(plateforme.getNom().trim()) && plateforme.getNom().trim() != null) {
-			
+			plateforme = dao.save(plateforme);
 		} else {
 			throw new PlateformeException("La plateforme que vous tentez de persister ne contient pa de nom!");
 		}
-		return null;
+		return plateforme;
 	}
 
 }

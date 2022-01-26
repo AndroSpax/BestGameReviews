@@ -9,6 +9,9 @@ import javax.validation.constraints.NotEmpty;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -40,6 +43,7 @@ public abstract class Utilisateur implements UserDetails {
 	@Column(unique = true)
 	@NotEmpty(message = "Un pseudo est indispensable")
 	protected String pseudo;
+	@JsonProperty(access = Access.WRITE_ONLY)
 	@NotEmpty(message = "Un mot de passe est indispensable")
 	protected String motDePasse;
 	@Column(unique = true)

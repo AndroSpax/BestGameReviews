@@ -1,5 +1,6 @@
 package com.bestgamesreviews.dao;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,4 +23,7 @@ public interface UtilisateurDAO extends JpaRepository<Utilisateur, Long>{
 	            " where u.pseudo = ?1"
 	            + "or u.email = ?1")
 	    Optional<Utilisateur> findByUsername(String username);
+	 
+	 
+	 List<Utilisateur> findByEmail(String email); 
 }
