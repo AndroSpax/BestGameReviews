@@ -28,8 +28,7 @@ import com.bestgamesreviews.service.AvisServiceImpl;
  */
 @RestController
 @RequestMapping("api")
-@CrossOrigin(origins = "*", maxAge = 3600,
-allowedHeaders={"x-auth-token", "x-requested-with", "x-xsrf-token"})
+@CrossOrigin(origins = "http://localhost:4200/", maxAge = 3600)
 public class AvisController {
 
 	@Autowired
