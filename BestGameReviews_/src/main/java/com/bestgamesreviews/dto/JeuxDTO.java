@@ -18,7 +18,7 @@ public class JeuxDTO {
 	private LocalDate dateDeSortie;
 	private String description;
 	private String genre;
-	private String string;
+	private String image;
 	private String classification;
 	private String plateforme; 
 	private String modeleEconomique; 

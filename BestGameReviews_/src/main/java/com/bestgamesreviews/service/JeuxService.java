@@ -2,7 +2,7 @@ package com.bestgamesreviews.service;
 
 import java.util.List;
 
-import com.bestgamesreviews.entity.Avis;
+import com.bestgamesreviews.dto.JeuxDTO;
 import com.bestgamesreviews.entity.Jeux;
 import com.bestgamesreviews.exception.JeuxException;
 
@@ -37,4 +37,6 @@ public interface JeuxService {
 	 * @return
 	 */
 	String deleteAvis(Long id);
+
+	List<JeuxDTO> findAllDTO();
 }
