@@ -51,6 +51,7 @@ public class AvisController {
 		}
 		return ResponseEntity.status(200).body(response);
 	}
+
 	@GetMapping(value = "/liste-avis-dto")
 	public ResponseEntity<?> obtenirAvisDTO() {
 		Map<String, AvisDTO> response = new HashMap<>();
@@ -64,6 +65,7 @@ public class AvisController {
 		}
 		return ResponseEntity.status(200).body(response);
 	}
+
 	@PostMapping("/ajouter-avis")
 	public ResponseEntity<?> ajouterAvis(@RequestBody Avis avis) {
 		Avis response = avisService.addAvis(avis);
@@ -74,7 +76,7 @@ public class AvisController {
 	public ResponseEntity<?> validerAvis(@RequestBody Avis avis) {
 		Map<String, Avis> response = new HashMap<>();
 		try {
-			System.out.println( " it works ");
+			System.out.println(" it works ");
 			response.put("sucess", avisService.validateAvis(avis));
 		} catch (Exception e) {
 			response.put("echec", null);
