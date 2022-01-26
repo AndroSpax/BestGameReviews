@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bestgamesreviews.dto.JeuxDTO;
 import com.bestgamesreviews.entity.Jeux;
 import com.bestgamesreviews.entity.Plateforme;
 import com.bestgamesreviews.exception.JeuxException;
@@ -29,9 +30,9 @@ import com.bestgamesreviews.service.PlateformeServiceImpl;
  * @author Marielle Machael Rudolph
  *
  */
-@CrossOrigin(origins = "*", maxAge = 3600, allowedHeaders = { "x-auth-token", "x-requested-with", "x-xsrf-token" })
+@CrossOrigin(origins = "http://localhost:4200/", maxAge = 3600, allowedHeaders = { "x-auth-token", "x-requested-with", "x-xsrf-token" })
 @RestController
-@RequestMapping("api/")
+@RequestMapping("api")
 public class JeuxController {
 
 	@Autowired
@@ -49,7 +50,7 @@ public class JeuxController {
 	 * 
 	 * @return ResponseEntity<status>.body(Map<String id, Jeux jeu)
 	 */
-	@GetMapping("liste-jeux")
+	@GetMapping("/liste-jeux")
 	public ResponseEntity<?> obtenirJeux() {
 		Map<String, Jeux> response = new HashMap<>();
 		try {
@@ -64,7 +65,19 @@ public class JeuxController {
 		return ResponseEntity.status(200).body(response);
 	}
 
-	@PostMapping("ajouter-jeux")
+
+	/**
+	 * Renvoie les jeux présent en base de donnée sous forme dto
+	 * 
+	 * @return List<JeuxDTO>
+	 */
+	@GetMapping("/liste-jeux-dto")
+	public List<JeuxDTO> obtenirJeuxDTO() {
+		
+		return jeuxService.findAllDTO();
+	}
+	
+	@PostMapping("/ajouter-jeux")
 	public ResponseEntity<?> ajouterJeux(@RequestBody Jeux jeu) {
 		Jeux response = null;
 		try {
@@ -75,7 +88,7 @@ public class JeuxController {
 		return ResponseEntity.status(201).body(response);
 	}
 
-	@DeleteMapping("supprimer-jeux/{id}")
+	@DeleteMapping("/supprimer-jeux/{id}")
 	public ResponseEntity<?> supprimerJeux(@PathVariable Long id) {
 		String response = jeuxService.deleteAvis(id);
 		return ResponseEntity.status(200).body(response);
