@@ -46,9 +46,10 @@ public interface AvisService {
 
 	/**
 	 * ajoute un avis en base
+	 * 
 	 * @param avis
-	 * @return
-	 * @throws AvisException 
+	 * @return 
+	 * @throws AvisException
 	 */
 	Avis persiste(Avis avis) throws AvisException;
 }

@@ -36,7 +36,6 @@ public class AvisController {
 	AvisService avisService = new AvisServiceImpl();
 
 	public AvisController() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@GetMapping(value = "/liste-avis")
