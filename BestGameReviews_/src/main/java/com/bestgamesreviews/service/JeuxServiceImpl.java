@@ -86,7 +86,7 @@ public class JeuxServiceImpl implements JeuxService {
 	public JeuxDTO transformeDto(Jeux jeu) {
 		
 		StringBuilder sb = new StringBuilder();
-		jeu.getListePlateforme().forEach(sb::append);
+		jeu.getListePlateforme().forEach(plat ->sb.append(plat.getNom()+ ","));
 		
 		return new JeuxDTO(jeu.getId(),
 				jeu.getNom(),
