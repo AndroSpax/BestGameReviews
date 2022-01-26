@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bestgamesreviews.dto.AvisDTO;
 import com.bestgamesreviews.entity.Avis;
 import com.bestgamesreviews.service.AvisService;
 import com.bestgamesreviews.service.AvisServiceImpl;
@@ -35,7 +36,6 @@ public class AvisController {
 	AvisService avisService = new AvisServiceImpl();
 
 	public AvisController() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@GetMapping(value = "/liste-avis")
@@ -51,7 +51,19 @@ public class AvisController {
 		}
 		return ResponseEntity.status(200).body(response);
 	}
-
+	@GetMapping(value = "/liste-avis-dto")
+	public ResponseEntity<?> obtenirAvisDTO() {
+		Map<String, AvisDTO> response = new HashMap<>();
+		try {
+			for (AvisDTO avis : avisService.findAllDTO()) {
+				response.put(String.valueOf(avis.getId()), avis);
+			}
+		} catch (Exception e) {
+			response.put("error", null);
+			return ResponseEntity.status(409).body(response);
+		}
+		return ResponseEntity.status(200).body(response);
+	}
 	@PostMapping("/ajouter-avis")
 	public ResponseEntity<?> ajouterAvis(@RequestBody Avis avis) {
 		Avis response = avisService.addAvis(avis);
