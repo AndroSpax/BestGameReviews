@@ -31,7 +31,7 @@ public class AvisServiceImpl implements AvisService {
 	public List<AvisDTO> findAllDTO() {
 		List<AvisDTO> avisdto = new ArrayList<>();
 		List<Avis> listAvs  = avisDAO.findAll();
-		
+//		listAvs.stream().map( c -> new Avisdto()).collect(Collectors.toList());
 		
 		listAvs.forEach(e -> {
 			if (e.getModerateur() != null) {
@@ -98,6 +98,26 @@ public class AvisServiceImpl implements AvisService {
 			throw new AvisException("Cette avis n'est associé à aucun joueur");
 		}
 		return avis;
+	}
+	
+	public AvisDTO transforme(Avis e) {
+		if (e.getModerateur() != null) {
+			this.valid = true;
+		}else {
+			this.valid =  false;
+		}
+		return new AvisDTO(e.getId(),
+				e.getJeu().getNom(),
+				e.getJeu().getId(),
+				e.getDateEnvoi(),
+				e.getDescription(),
+				e.getNote(),
+				e.getJoueur().getPseudo(),
+				e.getJoueur().getId(),
+				e.getJeu().getImage(),
+				valid,
+				e.getModerateur().getPseudo(),
+				e.getModerateur().getId());
 	}
 	
 }
