@@ -60,13 +60,13 @@ public class SpringSecurityConfig  extends WebSecurityConfigurerAdapter  {
 			.antMatchers("/api/admin/**").hasAuthority(AuthoritiesConstants.ADMIN)
 			.antMatchers("/api/**")
 			.authenticated()
-            .and().csrf()
-            .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-            .and()
-            .cors()
-            .and()
-            .authorizeRequests()
-            .anyRequest().authenticated();
+            .and().csrf().disable();
+//            .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+//            .and()
+//            .cors()
+//            .and()
+//            .authorizeRequests()
+//            .anyRequest().authenticated();
        
 //        .and()
 //            .apply(securityConfigurerAdapter());
