@@ -4,6 +4,7 @@
 package com.bestgamesreviews.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bestgamesreviews.dto.AvisDTO;
 import com.bestgamesreviews.entity.Avis;
 import com.bestgamesreviews.service.AvisService;
 import com.bestgamesreviews.service.AvisServiceImpl;
@@ -28,8 +30,7 @@ import com.bestgamesreviews.service.AvisServiceImpl;
  */
 @RestController
 @RequestMapping("api")
-@CrossOrigin(origins = "*", maxAge = 3600,
-allowedHeaders={"x-auth-token", "x-requested-with", "x-xsrf-token"})
+@CrossOrigin(origins = "http://localhost:4200/", maxAge = 3600)
 public class AvisController {
 
 	@Autowired
@@ -52,6 +53,14 @@ public class AvisController {
 		return ResponseEntity.status(200).body(response);
 	}
 
+	@GetMapping(value = "/liste-avis-dto")
+	public List<AvisDTO> obtenirAvisDTO() {
+		Map<String, Object> response = new HashMap<>();
+
+				return avisService.findAllDTO();
+		
+	}
+
 	@PostMapping("/ajouter-avis")
 	public ResponseEntity<?> ajouterAvis(@RequestBody Avis avis) {
 		Avis response = avisService.addAvis(avis);
@@ -62,7 +71,7 @@ public class AvisController {
 	public ResponseEntity<?> validerAvis(@RequestBody Avis avis) {
 		Map<String, Avis> response = new HashMap<>();
 		try {
-			System.out.println( " it works ");
+			System.out.println(" it works ");
 			response.put("sucess", avisService.validateAvis(avis));
 		} catch (Exception e) {
 			response.put("echec", null);
