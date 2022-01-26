@@ -70,7 +70,8 @@ const materialModules = [
   MatDatepickerModule,
   MatTooltipModule,
   MatSlideToggleModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+
 ];
 
 

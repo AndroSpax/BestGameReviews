@@ -7,20 +7,31 @@ import { ListeAvisComponent } from './liste-avis/liste-avis.component';
 
 import { MaterialModule } from '../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { FrenchPaginator } from '../french-paginator';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { AvisComponent } from './avis/avis.component';
 //example of eager loading
 // export const avisModuleRoutes: Routes = [{ path:'', component:ListeAvisComponent}];
 
 @NgModule({
+
   declarations: [
     ListeAvisComponent,
     AjouterAvisComponent,
+    AvisComponent,
   ],
   imports: [
     CommonModule,
     AvisRoutingModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ReactiveFormsModule,
+    FormsModule
+  ],
+  providers:[
+    { provide: MatPaginatorIntl, useValue: FrenchPaginator()}
   ]
 })
 export class AvisModule { }

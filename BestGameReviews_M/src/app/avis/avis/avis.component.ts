@@ -1,14 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { DataService } from '../services/data.service';
+import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 import { Subscription } from 'rxjs';
 
-
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-avis',
+  templateUrl: './avis.component.html',
+  styleUrls: ['./avis.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class AvisComponent implements OnInit {
 
   // initialise le thème du user
   theme: string = "";

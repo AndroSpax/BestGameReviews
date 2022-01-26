@@ -1,14 +1,17 @@
-.div-notFound{
-  // margin-top: 50vh; /* poussé de la moitié de hauteur de viewport */
-  // transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
-  box-sizing: border-box;
+// .div-notFound{
+//   // margin-top: 50vh; /* poussé de la moitié de hauteur de viewport */
+//   // transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+//   box-sizing: border-box;
+// }
+.notFoundCard {
+  min-height: 85vh;
 }
 
 .notFound {
   font-family: 'Press Start 2P', cursive;
   font-size: 36px;
   text-align: center;
-  margin: 3em auto;
+  margin: 1em auto;
 }
 
 .notFound-img {
@@ -24,7 +27,7 @@
 
 .notFound-btn {
   margin:0 auto;
-  margin: 10em auto;
+  margin: 8em auto;
   display: flex;
   justify-content: space-evenly;
 
