@@ -6,8 +6,11 @@ package com.bestgamesreviews.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.security.RolesAllowed;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bestgamesreviews.configuration.AuthoritiesConstants;
 import com.bestgamesreviews.entity.Avis;
 import com.bestgamesreviews.service.AvisService;
 import com.bestgamesreviews.service.AvisServiceImpl;
@@ -25,18 +29,20 @@ import com.bestgamesreviews.service.AvisServiceImpl;
  * @author Marielle Machael Rudolph
  *
  */
+
+@CrossOrigin(origins = "*", maxAge = 3600, allowedHeaders = { "x-auth-token", "x-requested-with", "x-xsrf-token" })
 @RestController
-@RequestMapping("/api")
+@RequestMapping("api/avis")
 public class AvisController {
 
 	@Autowired
 	AvisService avisService = new AvisServiceImpl();
 
 	public AvisController() {
-		// TODO Auto-generated constructor stub
 	}
 
-	@GetMapping(value = "/liste-avis")
+	@RolesAllowed({ "USER", "ADMIN" })
+	@GetMapping(value = "/liste")
 	public ResponseEntity<?> obtenirAvis() {
 		Map<String, Avis> response = new HashMap<>();
 		try {
@@ -50,17 +56,19 @@ public class AvisController {
 		return ResponseEntity.status(201).body(response);
 	}
 
-	@PostMapping("/ajouter-avis/")
+	@RolesAllowed("USER")
+	@PostMapping("/ajouter")
 	public ResponseEntity<?> ajouterAvis(@RequestBody Avis avis) {
 		Avis response = avisService.addAvis(avis);
 		return ResponseEntity.status(200).body(response);
 	}
 
-	@PutMapping("/valider-avis/")
+	@RolesAllowed("ADMIN")
+	@PutMapping("/valider")
 	public ResponseEntity<?> validerAvis(@RequestBody Avis avis) {
 		Map<String, Avis> response = new HashMap<>();
 		try {
-			System.out.println( " it works ");
+			System.out.println(" it works ");
 			response.put("sucess", avisService.validateAvis(avis));
 		} catch (Exception e) {
 			response.put("echec", null);
@@ -68,10 +76,10 @@ public class AvisController {
 		return ResponseEntity.status(200).body(response);
 	}
 
-	@DeleteMapping("/supprimer-avis/{id}")
+	@RolesAllowed("ADMIN")
+	@DeleteMapping("/supprimer/{id}")
 	public ResponseEntity<?> supprimerAvis(@PathVariable Long id) {
 		String response = avisService.deleteAvis(id);
 		return ResponseEntity.status(200).body(response);
 	}
-
 }

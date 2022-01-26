@@ -3,7 +3,6 @@
  */
 package com.bestgamesreviews.controller;
 
-
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
@@ -47,9 +46,10 @@ public class UserController {
 	 * @param Joueur joueur
 	 * @return ResponseEntity <Map<String, Joueur>>
 	 */
-	@PostMapping("/api/inscription/")
+	@RolesAllowed("AANONYMOUS")
+	@PostMapping("/api/inscription") // register
 	public ResponseEntity<?> inscriptionJoueur(@RequestBody Joueur joueur) {
-
+		System.out.println("Inscription Activer");
 		Map<String, Joueur> response = new HashMap<>();
 
 		try {
@@ -69,7 +69,6 @@ public class UserController {
 		}
 		return ResponseEntity.status(201).body(response);
 	}
-
 
 	/**
 	 * Permet à un utilisateur de se connecter avec un pseudo / mot de passe !
@@ -101,27 +100,27 @@ public class UserController {
 		return ResponseEntity.status(201).body(response);
 	}
 
-
-	
 	/**
 	 * gérer les rôles user et revoie un taken pour suivre l'utilisateut
+	 * 
 	 * @return
 	 */
-	  @RolesAllowed("USER")
-	   @RequestMapping("/*")
-	   public String getUser()
-	   {
-	      return "Welcome User";
-	   }
+//	  @RolesAllowed("USER")
+//	   @RequestMapping("/*")
+//	   public String getUser()
+//	   {
+//	      return "Welcome User";
+//	   }
 
-	  /**
-		 * gérer les rôles Admin et revoie un taken pour suivre l'utilisateut
-		 * @return
-		 */
-	   @RolesAllowed({"USER","ADMIN"})
-	   @RequestMapping("/admin")
-	   public String getAdmin()
-	   {
-	      return "Welcome Admin";
-	   }
+	/**
+	 * gérer les rôles Admin et revoie un taken pour suivre l'utilisateut
+	 * 
+	 * @return //
+	 */
+//	   @RolesAllowed({"USER","ADMIN"})
+//	   @RequestMapping("/admin")
+//	   public String getAdmin()
+//	   {
+//	      return "Welcome Admin";
+//	   }
 }

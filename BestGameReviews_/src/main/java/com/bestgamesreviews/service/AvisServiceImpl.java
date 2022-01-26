@@ -51,4 +51,8 @@ public class AvisServiceImpl implements AvisService {
 			return "Supression de l'avis " + id + " impossible ";
 		}
 	}
+	
+	public void setDAO(AvisDAO avis) {
+		this.avisDAO = avis;
+	}
 }
