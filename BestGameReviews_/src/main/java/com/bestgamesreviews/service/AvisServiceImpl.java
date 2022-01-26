@@ -1,11 +1,14 @@
 package com.bestgamesreviews.service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bestgamesreviews.dao.AvisDAO;
+import com.bestgamesreviews.dto.AvisDTO;
 import com.bestgamesreviews.entity.Avis;
 import com.bestgamesreviews.exception.AvisException;
 
@@ -15,9 +18,43 @@ public class AvisServiceImpl implements AvisService {
 	@Autowired
 	AvisDAO avisDAO;
 
+	/**
+	 * attribue pour donné un status à l'avis DTO
+	 */
+	private Boolean valid = true;
 	@Override
 	public List<Avis> findAll() {
 		return avisDAO.findAll();
+	}
+	
+	@Override
+	public List<AvisDTO> findAllDTO() {
+		List<AvisDTO> avisdto = new ArrayList<>();
+		List<Avis> listAvs  = avisDAO.findAll();
+		
+		
+		listAvs.forEach(e -> {
+			if (e.getModerateur() != null) {
+				this.valid = true;
+			}else {
+				this.valid =  false;
+			}
+			avisdto.add(
+					new AvisDTO(
+							e.getId(),
+							e.getJeu().getNom(),
+							e.getJeu().getId(),
+							e.getDateEnvoi(),
+							e.getDescription(),
+							e.getNote(),
+							e.getJoueur().getPseudo(),
+							e.getJoueur().getId(),
+							e.getJeu().getImage(),
+							valid,
+							e.getModerateur().getPseudo(),
+							e.getModerateur().getId()));
+				});
+		return avisdto ;
 	}
 
 	@Override

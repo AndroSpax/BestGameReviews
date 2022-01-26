@@ -2,6 +2,7 @@ package com.bestgamesreviews.service;
 
 import java.util.List;
 
+import com.bestgamesreviews.dto.AvisDTO;
 import com.bestgamesreviews.entity.Avis;
 import com.bestgamesreviews.exception.AvisException;
 
@@ -51,4 +52,10 @@ public interface AvisService {
 	 * @throws AvisException 
 	 */
 	Avis persiste(Avis avis) throws AvisException;
+	
+	/**
+	 * Charge la liste des avisDto
+	 * @return
+	 */
+	public List<AvisDTO> findAllDTO();
 }
