@@ -1,5 +1,7 @@
 package com.bestgamesreviews.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,11 @@ public class GenreServiceImpl implements GenreService{
 			throw new GenreException("Le genre que vous tentez de persister ne contient pas de nom!");
 		}
 		return null;
+	}
+
+	@Override
+	public List<Genre> getAll() {
+		return genreDAO.findAll() ;
 	}
 
 }

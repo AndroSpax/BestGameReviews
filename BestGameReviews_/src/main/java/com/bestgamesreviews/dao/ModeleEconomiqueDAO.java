@@ -15,4 +15,11 @@ import com.bestgamesreviews.entity.ModeleEconomique;
 @RepositoryRestResource(exported = true)
 public interface ModeleEconomiqueDAO extends JpaRepository<ModeleEconomique, Long> {
 
+	/**
+	 * Retrouve un Modele Economique par rapport à un nom
+	 * @param String modeleEconomique
+	 * @return ModeleEconomique modeleEconomique
+	 */
+	ModeleEconomique findByNom(String modeleEconomique);
+	
 }

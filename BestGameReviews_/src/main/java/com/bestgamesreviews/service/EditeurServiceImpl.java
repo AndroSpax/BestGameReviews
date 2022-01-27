@@ -1,5 +1,7 @@
 package com.bestgamesreviews.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,11 @@ public class EditeurServiceImpl implements EditeurService {
 			throw new EditeurException("L'objet editeur que vous tentez de persister ne contient pas de nom!");
 		}
 		return editeur;
+	}
+
+	@Override
+	public List<Editeur> getAll() {		
+		return editeurDAO.findAll();
 	}
 	
 	

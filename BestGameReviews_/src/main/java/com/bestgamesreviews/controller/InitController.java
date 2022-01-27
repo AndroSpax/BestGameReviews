@@ -77,6 +77,9 @@ public class InitController {
 	private void init() throws AvisException, GenreException, EditeurException, PlateformeException,
 			ModeleEconomiqueException, UtilisateurException, JeuxException, ClassificationException {
 
+		
+		if (utilisateurServiceImpl.getAllUsers().isEmpty()) {
+		
 		/*
 		 * Moderateur ( String pseudo, String motDePasse, String email,String
 		 * numeroDetelephone)
@@ -197,6 +200,7 @@ public class InitController {
 		// persiste en base
 		avisService.persiste(avis);
 		avisService.persiste(avis1);
+		}
 
 	}
 

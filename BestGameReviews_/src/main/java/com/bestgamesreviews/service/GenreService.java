@@ -1,5 +1,7 @@
 package com.bestgamesreviews.service;
 
+import java.util.List;
+
 import com.bestgamesreviews.entity.Genre;
 import com.bestgamesreviews.exception.GenreException;
 
@@ -18,4 +20,10 @@ public interface GenreService {
 	 * @throws GenreException 
 	 */
 	Genre persiste(Genre genre) throws GenreException;
+	
+	/**
+	 * Retourne tous les genres
+	 * @return
+	 */
+	List<Genre> getAll();
 }
