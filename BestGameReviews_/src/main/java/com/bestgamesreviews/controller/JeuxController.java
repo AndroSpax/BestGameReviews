@@ -19,11 +19,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bestgamesreviews.dto.JeuxDTO;
+import com.bestgamesreviews.entity.Editeur;
+import com.bestgamesreviews.entity.Genre;
 import com.bestgamesreviews.entity.Jeux;
+import com.bestgamesreviews.entity.ModeleEconomique;
 import com.bestgamesreviews.entity.Plateforme;
 import com.bestgamesreviews.exception.JeuxException;
+import com.bestgamesreviews.service.EditeurService;
+import com.bestgamesreviews.service.EditeurServiceImpl;
+import com.bestgamesreviews.service.GenreService;
+import com.bestgamesreviews.service.GenreServiceImpl;
 import com.bestgamesreviews.service.JeuxService;
 import com.bestgamesreviews.service.JeuxServiceImpl;
+import com.bestgamesreviews.service.ModeleEconomiqueImpl;
+import com.bestgamesreviews.service.ModeleEconomiqueService;
 import com.bestgamesreviews.service.PlateformeServiceImpl;
 
 /**
@@ -37,6 +46,15 @@ public class JeuxController {
 
 	@Autowired
 	private JeuxService jeuxService = new JeuxServiceImpl();
+
+	@Autowired
+	private GenreService genreServiveImpl = new GenreServiceImpl();
+
+	@Autowired
+	private ModeleEconomiqueService modeleEconomiqueServiveImpl = new ModeleEconomiqueImpl();
+
+	@Autowired
+	private EditeurService editeurImpl = new EditeurServiceImpl();
 
 	private final PlateformeServiceImpl plateformeServiceImpl;
 
@@ -94,13 +112,12 @@ public class JeuxController {
 	 * @param JeuxDTO jeuDto
 	 * @return JeuxDTO jeuDto
 	 */
-	
+
 	@PostMapping("/ajouter-jeux-dto")
 	public JeuxDTO ajouterJeuxDTO(@RequestBody JeuxDTO jeu) {
 		try {
-			return jeuxService.addJeux(jeu);	
+			return jeuxService.addJeux(jeu);
 		} catch (Exception e) {
-			e.printStackTrace(); //TODO : to remove
 			return null;
 		}
 	}
@@ -112,13 +129,49 @@ public class JeuxController {
 	 * @return
 	 */
 	@DeleteMapping("supprimer-jeux/{id}")
-	public ResponseEntity<?> supprimerJeux(@PathVariable Long id) {
-		String response = jeuxService.deleteAvis(id);
-		return ResponseEntity.status(200).body(response);
+	public String supprimerJeux(@PathVariable Long id) {
+		return jeuxService.deleteAvis(id);
 	}
+
+	/**
+	 * Récupère tous les plateformes présent en base de données
+	 * 
+	 * @return List<Plateforme>
+	 */
 
 	@GetMapping("/plateforme")
 	public List<Plateforme> plateforme() {
 		return plateformeServiceImpl.getAll();
 	}
+
+	/**
+	 * Récupère tous les genre présent en base de données
+	 * 
+	 * @return List<Genre>
+	 */
+	@GetMapping("/genre")
+	public List<Genre> getGenres() {
+		return genreServiveImpl.getAll();
+	}
+
+	/**
+	 * Récupère tous les modèleéconomique présent en base de données
+	 * 
+	 * @return List<ModeleEconomique>
+	 */
+	@GetMapping("/modeleeconomique")
+	public List<ModeleEconomique> getModeleEconomique() {
+		return modeleEconomiqueServiveImpl.getAll();
+	}
+
+	/**
+	 * Récupère tous les éditeurs présent en base de données
+	 * 
+	 * @return List<Editeur>
+	 */
+	@GetMapping("/editeur")
+	public List<Editeur> getEditeur() {
+		return editeurImpl.getAll();
+	}
+
 }

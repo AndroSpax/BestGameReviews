@@ -103,22 +103,14 @@ public class JeuxServiceImpl implements JeuxService {
 	@Override
 	public JeuxDTO addJeux(JeuxDTO jeu) {
 		
-		//List des plateforme 
+		//List des plateformes 
 		List<Plateforme> plateformeJeux = new ArrayList<>();
-		//pour récupérer les noms des plateformes
-		StringBuilder platName  = new StringBuilder();
-		for(char ch : jeu.getPlateforme().toCharArray()) {
-			if(ch == ',') {
-				plateformeJeux.add(plaDAO.findByNom(platName.toString()));
-				platName.setLength(0);;
-			}
-		platName.append(ch);
+
+		for(String str : jeu.getPlateforme().split(",")) {
+			plateformeJeux.add(plaDAO.findByNom(str));
 		}
-		//  /!\ TODO : trouver le moyen d'enregistrer le dernier mot /!\
-		//pour ajouter le dernier Plateforme
-		plateformeJeux.add(plaDAO.findByNom(platName.toString()));
 		
-		return transformeDto( jeuDao.save( new Jeux(
+		Jeux jeuToTransform =  jeuDao.save( new Jeux(
 				jeu.getNom(),
 				jeu.getDescription(),
 				jeu.getDateDeSortie(),
@@ -128,7 +120,12 @@ public class JeuxServiceImpl implements JeuxService {
 				editeurDAO.findByNom(jeu.getEditeur()),
 				plateformeJeux,
 				meDAO.findByNom(jeu.getModeleEconomique())
-			)));
+			));
 		
+		jeu = transformeDto(jeuToTransform);
+		
+		jeu.setId( jeuToTransform.getId());
+		 
+		 return jeu;
 	}
 }
