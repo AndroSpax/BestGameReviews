@@ -83,6 +83,16 @@ public class JeuxController {
 		}
 		return ResponseEntity.status(200).body(response);
 	}
+	/**
+	* Renvoie les jeux présent en base de donnée sous forme dto
+	*
+	* @return List<JeuxDTO>
+	*/
+	@GetMapping("/liste-jeux-dto")
+	public List<JeuxDTO> obtenirJeuxDTO() {
+
+	return jeuxService.findAllDTO();
+	}
 
 	@PostMapping("ajouter-jeux")
 	public ResponseEntity<?> ajouterJeux(@RequestBody Jeux jeu) {
