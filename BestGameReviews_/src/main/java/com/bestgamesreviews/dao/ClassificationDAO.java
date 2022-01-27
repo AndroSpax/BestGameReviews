@@ -15,4 +15,10 @@ import com.bestgamesreviews.entity.Classification;
 @RepositoryRestResource(exported = true)
 public interface ClassificationDAO extends JpaRepository<Classification, Long> {
 
+	/**
+	 * Trouve une classification par rapport à son nom
+	 * @param String nom
+	 * @return Classification classification 
+	 */
+	Classification findByNom(String nom);
 }

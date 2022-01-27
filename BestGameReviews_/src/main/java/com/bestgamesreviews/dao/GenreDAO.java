@@ -15,4 +15,11 @@ import com.bestgamesreviews.entity.Genre;
 @RepositoryRestResource(exported = true)
 public interface GenreDAO extends JpaRepository<Genre, Long> {
 
+	/**
+	 * Retrouve un genre par rapport à son nom
+	 * @param String genre
+	 * @return Genre genre
+	 */
+	Genre findByNom(String genre);
+
 }

@@ -50,6 +50,7 @@ public class JeuxController {
 	 * 
 	 * @return ResponseEntity<status>.body(Map<String id, Jeux jeu)
 	 */
+	@Deprecated(forRemoval = true)
 	@GetMapping("/liste-jeux")
 	public ResponseEntity<?> obtenirJeux() {
 		Map<String, Jeux> response = new HashMap<>();
@@ -65,19 +66,7 @@ public class JeuxController {
 		return ResponseEntity.status(200).body(response);
 	}
 
-
-	/**
-	 * Renvoie les jeux présent en base de donnée sous forme dto
-	 * 
-	 * @return List<JeuxDTO>
-	 */
-	@GetMapping("/liste-jeux-dto")
-	public List<JeuxDTO> obtenirJeuxDTO() {
-		
-		return jeuxService.findAllDTO();
-	}
-	
-	@PostMapping("/ajouter-jeux")
+	@PostMapping("ajouter-jeux")
 	public ResponseEntity<?> ajouterJeux(@RequestBody Jeux jeu) {
 		Jeux response = null;
 		try {
@@ -88,7 +77,7 @@ public class JeuxController {
 		return ResponseEntity.status(201).body(response);
 	}
 
-	@DeleteMapping("/supprimer-jeux/{id}")
+	@DeleteMapping("supprimer-jeux/{id}")
 	public ResponseEntity<?> supprimerJeux(@PathVariable Long id) {
 		String response = jeuxService.deleteAvis(id);
 		return ResponseEntity.status(200).body(response);

@@ -19,7 +19,7 @@ public interface JeuxService {
 	 * Objet Jeux
 	 * 
 	 * @param jeux
-	 * @return 
+	 * @return
 	 * @throws JeuxException
 	 */
 	Jeux persiste(Jeux jeux) throws JeuxException;
@@ -33,10 +33,24 @@ public interface JeuxService {
 
 	/**
 	 * Supprime un jeux dans la base de données
+	 * 
 	 * @param Long id
 	 * @return
 	 */
 	String deleteAvis(Long id);
 
+	/**
+	 * Permet de transformer un objet Jeux en JeuxDTO
+	 * 
+	 * @param Jeux jeu
+	 * @return Jeuxdto jeuDTO
+	 */
 	List<JeuxDTO> findAllDTO();
+
+	/**
+	 * Ajoute un nouveau jeux à partir d'une DTO
+	 * @param Jeux jeudto
+	 * @return JeuxDTO jeuDTO
+	 */
+	JeuxDTO addJeux(JeuxDTO jeu);
 }

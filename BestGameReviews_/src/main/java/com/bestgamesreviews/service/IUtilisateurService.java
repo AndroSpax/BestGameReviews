@@ -3,6 +3,8 @@
  */
 package com.bestgamesreviews.service;
 
+import java.util.List;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
@@ -14,10 +16,17 @@ import com.bestgamesreviews.exception.UtilisateurException;
  *
  */
 public interface IUtilisateurService {
+	
+	/**
+	 * Charge tous les utilisateurs
+	 * @return List<Utilisateurs> 
+	 */
+	List<Utilisateur> getAllUsers();
+	
 	/**
 	 * 
 	 * @param username
-	 * @return
+	 * @return Utilisateur
 	 * @throws UsernameNotFoundException
 	 */
 	 Utilisateur loadUserByUsername(String username)throws UsernameNotFoundException;
