@@ -75,4 +75,9 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
 		return utilisateur;
 	}
 
+	@Override
+	public List<Utilisateur> getAllUsers() {
+		return userRepository.findAll();
+	}
+
 }

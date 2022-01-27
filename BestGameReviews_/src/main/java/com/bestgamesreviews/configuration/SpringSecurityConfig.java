@@ -58,7 +58,8 @@ public class SpringSecurityConfig  extends WebSecurityConfigurerAdapter  {
             .antMatchers("/api/account/reset-password/init").permitAll()
             .antMatchers("/api/account/reset-password/finish").permitAll()
 			.antMatchers("/api/admin/**").hasAuthority(AuthoritiesConstants.ADMIN)
-			.antMatchers("/api/**").permitAll();
+			.antMatchers("/api/**").permitAll()
+			.and().csrf().disable();
 //			.authenticated().disable();
 //            .and()
 //            .csrf().disable();

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bestgamesreviews.dto.JeuxDTO;
 import com.bestgamesreviews.entity.Jeux;
 import com.bestgamesreviews.entity.Plateforme;
 import com.bestgamesreviews.exception.JeuxException;
@@ -31,7 +32,7 @@ import com.bestgamesreviews.service.PlateformeServiceImpl;
  */
 @CrossOrigin(origins = "*", maxAge = 3600, allowedHeaders = { "x-auth-token", "x-requested-with", "x-xsrf-token" })
 @RestController
-@RequestMapping("api/")
+@RequestMapping("api")
 public class JeuxController {
 
 	@Autowired
@@ -49,7 +50,8 @@ public class JeuxController {
 	 * 
 	 * @return ResponseEntity<status>.body(Map<String id, Jeux jeu)
 	 */
-	@GetMapping("liste-jeux")
+	@Deprecated(forRemoval = true)
+	@GetMapping("/liste-jeux")
 	public ResponseEntity<?> obtenirJeux() {
 		Map<String, Jeux> response = new HashMap<>();
 		try {
@@ -64,6 +66,17 @@ public class JeuxController {
 		return ResponseEntity.status(200).body(response);
 	}
 
+	/**
+	 * Renvoie les jeux présent en base de donnée sous forme dto
+	 *
+	 * @return List<JeuxDTO>
+	 */
+	@GetMapping("/liste-jeux-dto")
+	public List<JeuxDTO> obtenirJeuxDTO() {
+		return jeuxService.findAllDTO();
+	}
+
+	@Deprecated(forRemoval = true)
 	@PostMapping("ajouter-jeux")
 	public ResponseEntity<?> ajouterJeux(@RequestBody Jeux jeu) {
 		Jeux response = null;
@@ -75,6 +88,29 @@ public class JeuxController {
 		return ResponseEntity.status(201).body(response);
 	}
 
+	/**
+	 * Ajoute un jeu à partir d'une DTO
+	 * 
+	 * @param JeuxDTO jeuDto
+	 * @return JeuxDTO jeuDto
+	 */
+	
+	@PostMapping("/ajouter-jeux-dto")
+	public JeuxDTO ajouterJeuxDTO(@RequestBody JeuxDTO jeu) {
+		try {
+			return jeuxService.addJeux(jeu);	
+		} catch (Exception e) {
+			e.printStackTrace(); //TODO : to remove
+			return null;
+		}
+	}
+
+	/**
+	 * Permet de supprimer un jeu
+	 * 
+	 * @param id
+	 * @return
+	 */
 	@DeleteMapping("supprimer-jeux/{id}")
 	public ResponseEntity<?> supprimerJeux(@PathVariable Long id) {
 		String response = jeuxService.deleteAvis(id);

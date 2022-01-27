@@ -15,4 +15,11 @@ import com.bestgamesreviews.entity.Editeur;
 @RepositoryRestResource(exported = true)
 public interface EditeurDAO extends JpaRepository<Editeur, Long> {
 
+	/**
+	 * Retrouve un editeur par rapport à son nom
+	 * @param String string
+	 * @return Editeur editeur
+	 */
+	Editeur findByNom(String editeur);
+
 }

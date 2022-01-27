@@ -103,7 +103,7 @@ public class Jeux {
 	}
 
 	/**
-	 * pour la création
+	 * Pour la création
 	 * @param nom
 	 * @param description
 	 * @param dateSortie
