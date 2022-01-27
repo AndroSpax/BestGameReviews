@@ -56,13 +56,15 @@ public class AvisController {
 	
 	@GetMapping(value = "/liste-avis-dto")
 	public List<AvisDTO> obtenirAvisDTO() {
+<<<<<<< HEAD
+	
+	 return avisService.findAllDTO();
+=======
 		Map<String, Object> response = new HashMap<>();
 
 				return avisService.findAllDTO();
 		
-				
-				
-
+>>>>>>> c2481073106b181f14a24f6ceae2bdba1d03bd83
 	}
 	
 
