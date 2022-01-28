@@ -20,16 +20,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class AvisDTO {
 
-	/**
-	 * private _nom: string,
-    private _dateEnvoi : Date ,
-    private _description: string,
-    private _note: string,
-    private _auteur: string 
-    private _auteur_id
-    private _image: string,
-    private _statut: string,
-	 */
 	private Long id;
 	private String nom;
 	private Long jeu_id;

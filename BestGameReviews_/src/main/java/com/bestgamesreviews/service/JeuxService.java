@@ -32,14 +32,6 @@ public interface JeuxService {
 	List<Jeux> findAll();
 
 	/**
-	 * Supprime un jeux dans la base de données
-	 * 
-	 * @param Long id
-	 * @return
-	 */
-	String deleteAvis(Long id);
-
-	/**
 	 * Permet de transformer un objet Jeux en JeuxDTO
 	 * 
 	 * @param Jeux jeu
@@ -53,4 +45,11 @@ public interface JeuxService {
 	 * @return JeuxDTO jeuDTO
 	 */
 	JeuxDTO addJeux(JeuxDTO jeu);
+
+	/**
+	 * Supprime un jeu
+	 * @param id
+	 * @return
+	 */
+	String deleteJeux(Long id);
 }

@@ -52,8 +52,8 @@ import com.bestgamesreviews.service.UtilisateurServiceImpl;
 import lombok.AllArgsConstructor;
 
 /**
- * @author Marielle Machael Rudolph C'est un contrôleur qui initialise des bojet
- *         et les persite en base de données
+ * C'est un contrôleur qui initialise des objets et les persistent en base de données
+ * @author Marielle Machael Rudolph 
  */
 
 @AllArgsConstructor

@@ -27,7 +27,9 @@ import org.springframework.security.web.header.writers.ReferrerPolicyHeaderWrite
 import org.springframework.web.filter.CorsFilter;
 
 import com.bestgamesreviews.dao.UtilisateurDAO;;
+
 /**
+ * Configuration de la sécurité
  * @author Administrator
  *
  */
@@ -82,6 +84,7 @@ public class SpringSecurityConfig  extends WebSecurityConfigurerAdapter  {
 //	private JWTConfigurer securityConfigurerAdapter() {
 //        return new JWTConfigurer(tokenProvider);
 //    }
+	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();

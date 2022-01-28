@@ -27,7 +27,7 @@ public interface AvisService {
 	 * @param Avis avis
 	 * @return Avis avis
 	 */
-	Avis addAvis(Avis avis);
+	AvisDTO addAvis(AvisDTO avis);
 
 	/**
 	 * Valide (ajoute un modérateur à un avis) un avis
@@ -49,14 +49,33 @@ public interface AvisService {
 	 * ajoute un avis en base
 	 * 
 	 * @param avis
-	 * @return 
+	 * @return
 	 * @throws AvisException
 	 */
 	Avis persiste(Avis avis) throws AvisException;
-	
+
 	/**
 	 * Charge la liste des avisDto
+	 * 
 	 * @return
 	 */
-	public List<AvisDTO> findAllDTO();
+	List<AvisDTO> findAllDTO();
+
+	/**
+	 * Recupere un avis, et y ajoute le modérateur qui l'a valider ainsi que la date
+	 * de la validation
+	 * 
+	 * @param id_avis
+	 * @param id_mod
+	 * @return AvisDTO
+	 */
+	AvisDTO modererAvis(Long id_avis, Long id_mod);
+
+	/**
+	 * Transforme un avis en avisdto
+	 * 
+	 * @param avis
+	 * @return avisDto
+	 */
+	public AvisDTO transformeDto(Avis e);
 }

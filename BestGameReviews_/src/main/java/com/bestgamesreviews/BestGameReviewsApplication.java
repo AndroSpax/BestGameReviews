@@ -7,9 +7,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class BestGameReviewsApplication {
 
-	 
 	public static void main(String[] args) {
 		SpringApplication.run(BestGameReviewsApplication.class, args);
 	}
-
 }

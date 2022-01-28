@@ -21,10 +21,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bestgamesreviews.dto.AvisDTO;
 import com.bestgamesreviews.entity.Avis;
+import com.bestgamesreviews.exception.AvisException;
 import com.bestgamesreviews.service.AvisService;
 import com.bestgamesreviews.service.AvisServiceImpl;
 
 /**
+ * Controller lié à aux Avis
  * @author Marielle Machael Rudolph
  *
  */
@@ -39,6 +41,7 @@ public class AvisController {
 	public AvisController() {
 	}
 
+	@Deprecated(forRemoval = true)
 	@GetMapping(value = "/liste-avis")
 	public ResponseEntity<?> obtenirAvis() {
 		Map<String, Avis> response = new HashMap<>();
@@ -53,25 +56,57 @@ public class AvisController {
 		return ResponseEntity.status(200).body(response);
 	}
 
+	/**
+	 * Renvoie la liste des Avis
+	 * @return
+	 */
 	@GetMapping(value = "/liste-avis-dto")
 	public List<AvisDTO> obtenirAvisDTO() {
 		Map<String, Object> response = new HashMap<>();
-
-				return avisService.findAllDTO();
-		
+		return avisService.findAllDTO();
 	}
 
+	/**
+	 * Ajouter un avis
+	 * 
+	 * @param avis
+	 * @return
+	 */
+	@PostMapping("/ajouter-avis-dto")
+	public AvisDTO ajouterAvisDTO(@RequestBody AvisDTO avisDto) {
+		return avisService.addAvis(avisDto);
+	}
+	
+	/**
+	 * Ajouter un avis (Deprecated)
+	 * 
+	 * @param avis
+	 * @return 
+	 */
+	@Deprecated(forRemoval = true)
 	@PostMapping("/ajouter-avis")
-	public ResponseEntity<?> ajouterAvis(@RequestBody Avis avis) {
-		Avis response = avisService.addAvis(avis);
+	public ResponseEntity<?> persiste(@RequestBody Avis avis) {
+		Avis response = null;
+		try {
+			response = avisService.persiste(avis);
+		} catch (AvisException e) {
+			e.printStackTrace();
+		}
 		return ResponseEntity.status(201).body(response);
 	}
 
-	@PutMapping("/valider-avis")
+	/**
+	 * Permet de valider un avis
+	 * 
+	 * @param id_Avis
+	 * @param id_Moderateur
+	 * @return
+	 */
+	@Deprecated(forRemoval = true)
+	@PutMapping("/valider-avis-old")
 	public ResponseEntity<?> validerAvis(@RequestBody Avis avis) {
 		Map<String, Avis> response = new HashMap<>();
 		try {
-			System.out.println(" it works ");
 			response.put("sucess", avisService.validateAvis(avis));
 		} catch (Exception e) {
 			response.put("echec", null);
@@ -79,10 +114,26 @@ public class AvisController {
 		return ResponseEntity.status(200).body(response);
 	}
 
+	/**
+	 * Permet de valider un avis
+	 * 
+	 * @param id_Avis
+	 * @param id_Moderateur
+	 * @return
+	 */
+	@PostMapping("/valider-avis")
+	public AvisDTO validerAvis(@PathVariable Long id_Avis, Long id_Moderateur) {
+		return avisService.modererAvis(id_Avis, id_Moderateur);
+	}
+
+	/**
+	 * Supprimer un avis
+	 * @param id
+	 * @return
+	 */
 	@DeleteMapping("/supprimer-avis/{id}")
 	public ResponseEntity<?> supprimerAvis(@PathVariable Long id) {
 		String response = avisService.deleteAvis(id);
 		return ResponseEntity.status(200).body(response);
 	}
-
 }

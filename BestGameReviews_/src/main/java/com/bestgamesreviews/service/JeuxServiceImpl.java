@@ -74,12 +74,12 @@ public class JeuxServiceImpl implements JeuxService {
 	}
 	
 	@Override
-	public String deleteAvis(Long id) {
+	public String deleteJeux(Long id) {
 		try {
 			jeuDao.deleteById(id);
-			return "Avis " + id + " supprimée";
+			return "Jeu " + id + " supprimée";
 		} catch (Exception e) {
-			return "Supression de l'avis " + id + " impossible ";
+			return "Supression du jeu " + id + " impossible ";
 		}
 	}
 	
@@ -126,6 +126,6 @@ public class JeuxServiceImpl implements JeuxService {
 		
 		jeu.setId( jeuToTransform.getId());
 		 
-		 return jeu;
+		return jeu;
 	}
 }

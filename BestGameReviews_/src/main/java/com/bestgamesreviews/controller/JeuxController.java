@@ -36,7 +36,8 @@ import com.bestgamesreviews.service.ModeleEconomiqueService;
 import com.bestgamesreviews.service.PlateformeServiceImpl;
 
 /**
- * @author Marielle Machael Rudolph
+ * Contrôleur liée aux Jeux
+ * @author Marielle Michael Rudolph
  *
  */
 @CrossOrigin(origins = "*", maxAge = 3600, allowedHeaders = { "x-auth-token", "x-requested-with", "x-xsrf-token" })
@@ -64,7 +65,7 @@ public class JeuxController {
 	}
 
 	/**
-	 * Renvoie la jeux des jeux présent en base de donnée
+	 * Renvoie des jeux présent en base de donnée
 	 * 
 	 * @return ResponseEntity<status>.body(Map<String id, Jeux jeu)
 	 */
@@ -107,16 +108,16 @@ public class JeuxController {
 	}
 
 	/**
-	 * Ajoute un jeu à partir d'une DTO
+	 * Ajoute un jeu à partir d'un DTO
 	 * 
 	 * @param JeuxDTO jeuDto
 	 * @return JeuxDTO jeuDto
 	 */
 
 	@PostMapping("/ajouter-jeux-dto")
-	public JeuxDTO ajouterJeuxDTO(@RequestBody JeuxDTO jeu) {
+	public JeuxDTO ajouterJeuxDTO(@RequestBody JeuxDTO jeuDto) {
 		try {
-			return jeuxService.addJeux(jeu);
+			return jeuxService.addJeux(jeuDto);
 		} catch (Exception e) {
 			return null;
 		}
@@ -126,11 +127,11 @@ public class JeuxController {
 	 * Permet de supprimer un jeu
 	 * 
 	 * @param id
-	 * @return
+	 * @return String
 	 */
 	@DeleteMapping("supprimer-jeux/{id}")
 	public String supprimerJeux(@PathVariable Long id) {
-		return jeuxService.deleteAvis(id);
+		return jeuxService.deleteJeux(id);
 	}
 
 	/**
@@ -138,7 +139,6 @@ public class JeuxController {
 	 * 
 	 * @return List<Plateforme>
 	 */
-
 	@GetMapping("/plateforme")
 	public List<Plateforme> plateforme() {
 		return plateformeServiceImpl.getAll();
@@ -173,5 +173,4 @@ public class JeuxController {
 	public List<Editeur> getEditeur() {
 		return editeurImpl.getAll();
 	}
-
 }
